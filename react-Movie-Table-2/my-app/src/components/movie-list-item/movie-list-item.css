@@ -20,6 +20,7 @@
     font-size: 20;
     text-align: center;
     border: 0;
+    background-color: #1c314dc9;
 }
 
 .list-group-item button{
@@ -63,6 +64,7 @@
 
 .list-group-item.increace .btn-star{
     color:#aeaeae;
+    
 }
 
 
