@@ -1,5 +1,8 @@
 import { Component } from "react";
+import { v4 as uuidv4 } from "uuid";
 import "./movies-add-form.css";
+
+// { ...item, id: uuidv4() }
 
 class MoviesAddForm extends Component {
     constructor(props) {
@@ -16,13 +19,30 @@ class MoviesAddForm extends Component {
         });
     };
 
+    addFormHandler = (e) => {
+        e.preventDefault();
+        this.props.addForm({
+            name: this.state.name,
+            viewers: this.state.views,
+            id: uuidv4(),
+        });
+        this.setState({
+            name: "",
+            views: "",
+        });
+    };
+
     render() {
         const { name, views } = this.state;
+
         return (
             <div className="movies-add-form">
                 <h3>Yangi kino qo'shish</h3>
 
-                <form className="add-form d-flex">
+                <form
+                    className="add-form d-flex"
+                    onSubmit={this.addFormHandler}
+                >
                     <input
                         type="text"
                         className="form-control new-post-label"

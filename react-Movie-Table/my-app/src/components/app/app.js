@@ -46,8 +46,6 @@ class App extends Component {
         };
     }
 
-  
-
     onDelete = (id) => {
         // console.log(id);
         this.setState(({ data }) => ({
@@ -61,6 +59,12 @@ class App extends Component {
             // return {
             //     data: data.filter((c) => c.id !== id),
             // };
+        }));
+    };
+
+    addForm = (item) => {
+        this.setState(({ data }) => ({
+            data: [...data, item],
         }));
     };
 
@@ -80,7 +84,7 @@ class App extends Component {
                     </div>
                     <MovieList data={data} onDelete={this.onDelete} />
                     {/* yani data yuqoridagi  serverdagi o'zgaruvchi serverni eng yuqoriga yozib  severni pastdagi hohlagan componentga shu tarzda chaqirib ishlatish mumkun */}
-                    <MoviesAddForm />
+                    <MoviesAddForm addForm={this.addForm} />
                 </div>
             </div>
         );
