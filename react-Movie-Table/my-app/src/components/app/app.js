@@ -5,6 +5,8 @@ import SearchPanel from "../search-panel/search-panel";
 import AppFilter from "../app-filter/app-filter";
 import MovieList from "../movie-list/movie-list";
 import MoviesAddForm from "../movies-add-form/movies-add-form";
+import { v4 as uuidv4 } from "uuid";
+
 
 class App extends Component {
     constructor(props) {
@@ -63,8 +65,14 @@ class App extends Component {
     };
 
     addForm = (item) => {
+        const newItem ={name:item.name, viewers:item.viewers, id:uuidv4()}
+
+
+        // Loyiha. Xodisalar propsi darsi 3 minutda qoldi 
+
+
         this.setState(({ data }) => ({
-            data: [...data, item],
+            data: [...data, newItem],
         }));
     };
 
