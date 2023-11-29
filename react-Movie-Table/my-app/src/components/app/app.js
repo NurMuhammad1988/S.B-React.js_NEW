@@ -7,7 +7,6 @@ import MovieList from "../movie-list/movie-list";
 import MoviesAddForm from "../movies-add-form/movies-add-form";
 import { v4 as uuidv4 } from "uuid";
 
-
 class App extends Component {
     constructor(props) {
         super(props);
@@ -18,30 +17,35 @@ class App extends Component {
                     name: "Empire of Osman",
                     viewers: 988,
                     favourite: false,
+                    like: false,
                     id: 1,
                 },
                 {
                     name: "The great Seljuks",
                     viewers: 1091,
-                    favourite: true,
+                    favourite: false,
+                    like: false,
                     id: 2,
                 },
                 {
                     name: "Kurulis Ertugrul",
                     viewers: 789,
                     favourite: false,
+                    like: false,
                     id: 3,
                 },
                 {
                     name: "The great Seljuks Uyanish",
                     viewers: 977,
-                    favourite: true,
+                    favourite: false,
+                    like: false,
                     id: 4,
                 },
                 {
                     name: "Salahuddin Quddus Fatihi",
                     viewers: 99977,
-                    favourite: true,
+                    favourite: false,
+                    like: false,
                     id: 5,
                 },
             ],
@@ -65,19 +69,52 @@ class App extends Component {
     };
 
     addForm = (item) => {
-        const newItem ={name:item.name, viewers:item.viewers, id:uuidv4()}
-
-
-        // Loyiha. Xodisalar propsi darsi 3 minutda qoldi 
-
-
+        const newItem = {
+            name: item.name,
+            viewers: item.viewers,
+            id: uuidv4(),
+            favourite: false,
+            like: false,
+        };
         this.setState(({ data }) => ({
             data: [...data, newItem],
         }));
     };
 
+    onToggleProp = (id, prop) => {
+        // console.log(prop);
+        this.setState(({ data }) => ({
+            data: data.map((item) => {
+                if (item.id === id) {
+                    return { ...item, [prop]: !item[prop] };
+                }
+
+                return item;
+            }),
+        }));
+        // console.log(`favourite ${id}`);
+    };
+
+    // onToggleLike = (id) => {
+
+    //     this.setState(({ data }) => ({
+    //         data: data.map((item) => {
+    //             if (item.id === id) {
+    //                 return { ...item, like: !item.like };
+    //             }
+
+    //             return item;
+    //         }),
+    //     }));
+    //     // console.log(`Like ${id}`);
+
+    // };
+
     render() {
         const { data } = this.state;
+        const allMoviesCount = data.length;
+        const favouriteMovieCount = data.filter(c => c.favourite).
+            length;
 
         return (
             <div className="app font-monospace">
@@ -85,12 +122,20 @@ class App extends Component {
                 <div className="content">
                     {" "}
                     {/*bu content clasname asosiy content yani saytni asosi hissobladi yani bu asosiy app.jsda bo'ladi */}
-                    <AppInfo />
+                    <AppInfo
+                        allMoviesCount={allMoviesCount}
+                        favouriteMovieCount={favouriteMovieCount}
+                    />
                     <div className="search-panel">
                         <SearchPanel />
                         <AppFilter />
                     </div>
-                    <MovieList data={data} onDelete={this.onDelete} />
+                    <MovieList
+                        onToggleProp={this.onToggleProp}
+                        // onToggleLike={this.onToggleLike}
+                        data={data}
+                        onDelete={this.onDelete}
+                    />
                     {/* yani data yuqoridagi  serverdagi o'zgaruvchi serverni eng yuqoriga yozib  severni pastdagi hohlagan componentga shu tarzda chaqirib ishlatish mumkun */}
                     <MoviesAddForm addForm={this.addForm} />
                 </div>
