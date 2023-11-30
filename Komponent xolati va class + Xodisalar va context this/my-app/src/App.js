@@ -1,5 +1,5 @@
 import "./App.css";
-import { Component } from "react";
+import { Component,Fragment } from "react";
 
 class User extends Component {
     constructor(props) {
@@ -92,10 +92,10 @@ class User extends Component {
 
 const App = () => {
     return (
-        <div>
+        <Fragment>//divmas fragment ichiga yozilishi key berish uchun kerak fragment reactdan import qilinadi
             <User firstName="Nur" lastName="Yorov" link="youtube.com" />
             <User firstName="Nur2" lastName="Yorov2" link="youtube.com" />
-        </div>
+        </Fragment>
     );
 };
 
