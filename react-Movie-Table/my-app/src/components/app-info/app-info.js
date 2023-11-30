@@ -1,4 +1,4 @@
-import "./app-info.css";
+import "./app-info.scss";
 
 const AppInfo = ({ allMoviesCount, favouriteMovieCount }) => {
     return (
@@ -6,6 +6,12 @@ const AppInfo = ({ allMoviesCount, favouriteMovieCount }) => {
             <p className="fs-3 text-uppercase">
                 Barcha kinolar soni: {allMoviesCount}
             </p>
+
+            {/* <p  style={{ fontSize: 40  }}>
+                Barcha kinolar son i: {allMoviesCount}
+            </p> */}
+            {/* style berish */}
+
             <p className="fs-3 text-uppercase">
                 Sevimli film: {favouriteMovieCount}
             </p>
