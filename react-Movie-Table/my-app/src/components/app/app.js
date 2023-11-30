@@ -15,7 +15,7 @@ class App extends Component {
                 //dars uchun test server yani server eng yuqorida bo'lishi kerak yani shunda pastdagi content class li divdagi filelargaham bu serverni chaqirsa bo'ladi bu server array yani massiv shuni uchun tepada turish kerak yani kod o'qish qoidasiga muofiq
                 {
                     name: "Empire of Osman",
-                    viewers: 988,
+                    viewers: 788,
                     favourite: false,
                     like: false,
                     id: 1,
@@ -49,6 +49,9 @@ class App extends Component {
                     id: 5,
                 },
             ],
+
+            term: "",
+            filter: "all",
         };
     }
 
@@ -110,11 +113,37 @@ class App extends Component {
 
     // };
 
+    searchHandler = (arr, term) => {
+        if (term.length === 0) {
+            return arr;
+        }
+
+        return arr.filter((item) => item.name.toLowerCase().indexOf(term) > -1);
+    };
+
+    filterHandler = (arr, filter) => {
+        switch (filter) {
+            case "popular":
+                return arr.filter((c) => c.like);
+            case "mostViewers":
+                return arr.filter((c) => c.viewers > 800);
+            default:
+                return arr;
+        }
+    };
+
+    updateTermHandler = (term) => this.setState({ term });
+
+    updateFilterHandler = (filter) => this.setState({ filter });
+
     render() {
-        const { data } = this.state;
+        const { data, term, filter } = this.state;
         const allMoviesCount = data.length;
-        const favouriteMovieCount = data.filter(c => c.favourite).
-            length;
+        const favouriteMovieCount = data.filter((c) => c.favourite).length;
+        const visibleData = this.filterHandler(
+            this.searchHandler(data, term),
+            filter
+        );
 
         return (
             <div className="app font-monospace">
@@ -127,13 +156,19 @@ class App extends Component {
                         favouriteMovieCount={favouriteMovieCount}
                     />
                     <div className="search-panel">
-                        <SearchPanel />
-                        <AppFilter />
+                        <SearchPanel
+                            updateTermHandler={this.updateTermHandler}
+                        />
+                        <AppFilter
+                        filter={filter}
+                            updateFilterHandler={this.updateFilterHandler}
+                        />
                     </div>
                     <MovieList
                         onToggleProp={this.onToggleProp}
                         // onToggleLike={this.onToggleLike}
-                        data={data}
+                        // data={data}
+                        data={visibleData}
                         onDelete={this.onDelete}
                     />
                     {/* yani data yuqoridagi  serverdagi o'zgaruvchi serverni eng yuqoriga yozib  severni pastdagi hohlagan componentga shu tarzda chaqirib ishlatish mumkun */}
