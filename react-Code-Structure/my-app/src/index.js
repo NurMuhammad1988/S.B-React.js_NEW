@@ -7,7 +7,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
         <App />
-    </React.StrictMode>//yani bu qattiy rejim buni ishlatishni boshqa yo'llariham bor masalan kerakli componentni o'ziga alohida chaqirib qo'yishxam mumkun failga import qilish strictmode tagini ichiga componentni o'rab qo'yishxam mumkun  lekin aslida appda asosiy failda turgani yahshi
+    </React.StrictMode>//yani bu qattiy rejim buni ishlatishni boshqa yo'llariham bor masalan kerakli componentni o'ziga alohida chaqirib qo'yishxam mumkun failga import qilish strictmode tagini ichiga componentni o'rab qo'yishxam mumkun  lekin aslida appda yani asosiy failda turgani yahshi
 );
 
 // import React from "react"; //kutubhonalar shunday o'z nomi bilan yani faqat react deb yozilib import qiinadi
@@ -23,7 +23,9 @@ root.render(
 //         <input type="text" />
 //         <button>Click</button>
 //     </div>
+    
 // );
+
 
 // const root = ReactDOM.createRoot(document.getElementById("root"));
 // root.render(
