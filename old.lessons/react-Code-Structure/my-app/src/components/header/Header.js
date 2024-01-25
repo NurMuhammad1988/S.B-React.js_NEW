@@ -18,3 +18,4 @@ const Header = () => {
 };
 
 export default Header
+// export {Header}//shunday export qilsaham bo'ladi yani bunda Header jsdafi har bir funksiyani alohida alohida shunday export qilsa bo'ladi export default Headerda esa faqat bitta shu funksiyani o'zini export qilsa bo'ladi
