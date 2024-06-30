@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./components/app/App";
-
+//NODE MODULS UDALIT QILINGAN DASTURNI ISHLATISH UCHUN my-app PAPKASIGA KIRIB npm i commadn yozilib node modules papka reactdan yuklanishi kerak
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     // <StrictMode>
