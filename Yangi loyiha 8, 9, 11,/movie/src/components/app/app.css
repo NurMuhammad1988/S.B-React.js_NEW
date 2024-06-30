@@ -1,10 +1,11 @@
 body {
-    background-color:darkslategrey;
+    background-color:rgb(34, 56, 56);
     margin-top: 3rem;
 }
 
 .app {
     height: 100vh;
+    
     color: #000;
 }
 
@@ -12,7 +13,7 @@ body {
     max-width: 1000px;
     background-color: #fff;
     margin: 0 auto;
-    /* padding: 5rem 0; */
+    padding: 5rem 0;
 }
 
 .search-panel {
