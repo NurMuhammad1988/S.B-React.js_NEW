@@ -116,7 +116,35 @@ class User extends Component {
             counter: 10,
             age: "",
         };
+
+        ////test-1 test-1 arrowsiz yani strelkasi function metod bilan ishlash eski usuli
+        //// this.clickHandlerPlusTest = this.clickHandlerPlusTest.bind(this);//yani agar metod arrow funskiyasi oddiy qo'lda yoziladigan metod bilan ishlansa shunday bind metodi bilan this contexni bog'lab qo'yish kerak bo'ladi clickHandlerPlusTest oddiy metodi uchun yozilgan pastdagi commentga qara//lekin oddiy metodlar ko'payib ketsa kodlar uzun bo'lib ketadi shu sabab tinchiga arrow funksiyalardan ishlatgan maqul
+        //arrow funksiyalar bilan ishlash reactda yani metod hissoblanadi (2022 yildan) eski loyihalarda bind metodi bilan thisni ulab ishlatish ko'roq uchraydi
     }
+
+    ////test-1, 2, 3 /////////////////////////////////////////////////////////////////////////
+    ////test-1 test-1 arrowsiz yani strelkasi function metod bilan ishlash eski usuli
+    // clickHandlerPlusTest() {
+    //     //bunday holat hato hissoblanadi yani callback strelkali funksiya yuozilishi kerak chunki oddiy funksiyalarni o'zini kontexsi bor shu sabab this.setStateni yo'qotib qo'yadi yani thisni yo'qotib qo'yadi strelkali funksiyalar o'z konteksiga ega emasligi sabab bu holatda agar strelkali funskiya bo'lsa thisni oladi arraw funksiya konteksni ichidagi qiymatdan oladi//yani this bilan yani classlar bilan ishlaganda oddiy metod bilanmas arrow yani strelkali metodlar yaratib ishlash kerak
+    //     this.setState((prevState) => ({
+    //         counter: prevState.counter + 1,
+    //     }));
+    // }
+
+    //// test-2 arrowsiz yani strelkasi function metod bilan ishlashni yana bir usuli bu usulda clickHandlerMinusTest jsxda chaqirilayotganda callback arrow funskiya ichida this bilan chaqirilishi kerak lekin aslida bunday holatda ishlagan maqul>>>clickHandlerMinus = () => {}
+    // clickHandlerMinusTest() {
+    //     this.setState((prevState) => ({
+    //         counter: prevState.counter - 1,
+    //     }));
+    // }
+    //// test-3 oddiy metodlar bilan inputda ishlaganda callbach yani arrow funskiyaga argumentlar yani parametrlar berish
+    // ChangeHandlerTest(e, number) {
+    //     console.log(number);
+    //     this.setState({
+    //         age: e.target.value,
+    //     });
+    // }
+    ////test-1, 2, 3 /////////////////////////////////////////////////////////////////////////
 
     clickHandlerPlus = () => {
         this.setState((prevState) => ({
@@ -157,7 +185,23 @@ class User extends Component {
                         Youtube kanalim
                     </a>
 
+                    {/* test 1,2////////////////////////////////////////////////////////// */}
                     <div className="mt-3">
+                        {/* <button ////test-1 test-1 arrowsiz yani strelkasi function metod bilan ishlash eski usuli (chaqirilish o'zgarmagan)
+                            onClick={this.clickHandlerPlusTest}
+                            className="btn btn-success"
+                        >
+                            Increment
+                        </button> */}
+                        {/* //////////////////////////////////////////////////////////////// */}
+                        {/* <button
+                            onClick={() => this.clickHandlerMinusTest()}
+                            className="btn btn-danger mx-3"
+                            ////test-2 test-2 arrowsiz yani strelkasi function metod bilan ishlash  ikkinchi usuli chaqirilishi yani arrow funskiya ichida thisni  clickHandlerMinusTestga chaqirib qo'yish
+                        >
+                            Decrement
+                        </button> */}
+                        {/* test 1,2////////////////////////////////////////////////////////// */}
                         <button
                             onClick={this.clickHandlerPlus}
                             className="btn btn-success"
@@ -184,6 +228,14 @@ class User extends Component {
 
                     <form>
                         <span>Yoshingiz</span>
+                        {/* test-3 ////////////////////////////////////////////////////////// */}
+                        {/* <input
+                            type="number"
+                            className="form-control"
+                            onChange={(e) => this.ChangeHandlerTest(e, "number")}
+                            // har doim parametrga birinchi event beriladi yani inputda arrow funksiyasiz faqat qo'lda yozilgan metod bilan ishlaganda doim parametrga birinchi eventni berish kerak chunki event input ichidagi hodisani oladi /> */}
+                        {/* test-3 ////////////////////////////////////////////////////////// */}
+
                         <input
                             type="number"
                             className="form-control"
