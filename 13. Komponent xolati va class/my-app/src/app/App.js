@@ -44,7 +44,7 @@ import "./App.css";
 class User extends Component {
     constructor(props) {
         //constructor doim eng yuqorida yoziladi
-        super(props); //qachonki constructor ishlatilsa super constructorgaga propisni berib qo'yish kerak
+        super(props); //qachonki constructor ishlatilsa super constructorgaga propisni berib qo'yish kerak chunki props object qaytaradi qanday object qaytaradi??? this.stateni ichidagini object qilib qaytaradi yani counterni
         this.state = {
             //this.state yani qandaydur holat//State React ilovasini yaratishda malumot yoki malumotlarni saqlash va boshqarish usulidir . satate  bu veb-sahifadagi real vaqtda malumotlar yoki malumotlarni o'z ichiga olgan JavaScript objekti//statew har doim object bo'ladi//state bo'lgani uchun bu objectni o'zgartirish mumkun
             counter: 10, //counter bu holatd ahuddi bir o'zgaruvchiday yani object
@@ -53,15 +53,38 @@ class User extends Component {
 
     //// reactda o'zgaruvchini to'g'ridan to'g'ri o'zgartirib bo'lmaydi shu sabab bu clickHandler funksiyasi setState funksiyasi bilan yozildi
     ////setState funksiyasi callback qaytaradi
-    clickHandler = () => {
-        this.setState({//{}<<jingalak qavus yangi object qaytarishni bildiradi yani setstate funksiyaga yangi object qaytargin deyildi
-            counter:this.state.counter + 1//yani clickHandler nomli funksiya yaratib unga this setstate qilib setstate funksiyasi chaqirildi va qiymati 10 bo'lib turgan counter o'zgaruvchini qiymatiga 1 ni qo'sh deyildi va bu clickHandler funksiyasi jsxdagi buttonga onClick qilib cthis bilan chaqirilib qo'yildi yani buttonda onclick hodisasi ilindi va button click bo'lganda counterdagi 10 ga har cklickda 1 qo'shilib boradi
 
-        })
+    // clickHandler = () => {
+    //     this.setState({
+    //         //{}<<jingalak qavus yangi object qaytarishni bildiradi yani setstate funksiyaga yangi object qaytargin deyildi
+    //         //  counter:this.state.counter + 1//yani clickHandler nomli funksiya yaratib unga this setstate qilib setstate funksiyasi chaqirildi va qiymati 10 bo'lib turgan counter o'zgaruvchini qiymatiga 1 ni qo'sh deyildi va bu clickHandler funksiyasi jsxdagi buttonga onClick qilib cthis bilan chaqirilib qo'yildi yani buttonda onclick hodisasi ilindi va button click bo'lganda counterdagi 10 ga har cklickda 1 qo'shilib boradi
+
+    //         //bu kod birinchi holat bu kodni ikkinchi holatdaham boshqacha qilib pastda yozdik chunki mobodo button tez click bo'lganda qotibqolsa bu funksiya bilan clicklarni yani tez bosilib qotib qolgandagi clicklarni yo'qotib qo'yish mumkun shu sabab kod dastur yani sayt qotib qolgandaham click bosilsa clicklarni saqlab qoladigan qilib boshqatdan pastda yozildi//
+
+    //     });
+    // };
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    clickHandlerPlus = () => {
+        this.setState((prevState) => ({
+            //{}<<jingalak qavus yangi object qaytarishni bildiradi yani setstate funksiyaga yangi object qaytargin deyildi parametridagi prevStateda endi oldingi holat bo'ladi yani counter:10 qiymatli o'zgaruvchini oldingi holati bo'ladi
+            counter: prevState.counter + 1, //prevState??? yani prevsatate parametri   oldingi holatga bog'glangan bo'ladi yani objectga hamma holatni saqlab qoladi yani prevsatate parametirda chaqirilganda chaqirilgan objectiga hodisani oldingi holatiniham saqlab qoladi yani bir nechta buttonga nechchi martta bosilsaham hodisalarni yani clicklarni objectga saqlab qoladi hech qanaqa cllickni yo'qotib qo'ymaydi
+        }));
     };
 
+    clickHandlerMinus = () => {
+        this.setState((prevState) => ({
+            counter: prevState.counter - 1,
+        })); //bu holatda hodisani oldingi holati saqlanib va click bo'lganda minsuga ishlaydi
+    };
+
+    clickHandlerRestart = () => {
+        this.setState(() => ({
+            counter: 0,
+            //counter: (prevState.counter = 0),//bu sintaksizham ishlayveradi
+        }));
+    };
+    /////////////////////////////////////////////////////////////////////////////////////////
     render() {
-        //bu holatda renderni ichi jsx yani react tashqarisi esa (js desaham bo'ladi) yani funksiyalar jsxdan tashqarida yoziladi
         const { firstName, lastName, link } = this.props;
         return (
             <div className="w-50 mx-auto ">
@@ -76,11 +99,27 @@ class User extends Component {
 
                     <div className="mt-3">
                         <button
-                            onClick={this.clickHandler} 
+                            onClick={this.clickHandlerPlus}
                             className="btn btn-success"
                         >
-                            Click
+                            Increment
                         </button>
+
+                        <button
+                            onClick={this.clickHandlerMinus}
+                            className="btn btn-danger mx-3"
+                        >
+                            Decrement
+                        </button>
+
+                        <button
+                            onClick={this.clickHandlerRestart}
+                            // mobodo funksiya onclikga chaqirilganda mani vc code temamda qizil bo'lib qoladi
+                            className="btn btn-info"
+                        >
+                            Restart
+                        </button>
+
                         <p>{this.state.counter}</p>
                     </div>
                 </div>
