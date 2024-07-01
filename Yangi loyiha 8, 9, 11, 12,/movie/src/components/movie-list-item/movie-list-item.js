@@ -1,9 +1,11 @@
 import "./movie-list-item.css";
 
-const MovieListItem = ({ name, viewers }) => {
-    // console.log(props);
+const MovieListItem = ({ name, viewers, favorite }) => {
+
     return (
-        <li className="list-group-item d-flex justify-content-between">
+        <li
+            className={`list-group-item d-flex justify-content-between ${ favorite && "favorite" }`}>
+                {/* favorite bu holatda cssdagi style class va data serverda massiv ichida va movielistda map qilinib bu joyga jo'natilgan va distruptatsa bilan el qatori chaqirilgan va if elsni qisqartirib yozish bilan agar true bo'lsa favorite classini qo'sh deyildi shynda data massivda malumot tru bo'lsa favorite classi qo'shiladi // interpalatsa bilan becetni ichida agar favorite classi true bo'lsa favorute classini qo'shgin deyildi>>>${ favorite && "favorite" } bu birinchi yo'li hissoblanadi  */}
             <span className="list-group-item-label">{name}</span>
 
             {/*  endi namelar dynamic tarzda movielist.js filedan kelepti stylelari bilan birga */}

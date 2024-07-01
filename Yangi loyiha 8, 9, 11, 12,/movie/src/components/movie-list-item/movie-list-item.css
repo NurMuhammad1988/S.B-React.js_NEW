@@ -5,7 +5,7 @@
 
 .list-group-item:last-child {
     border-bottom: none;
-    
+
     /*border-bottom: 1px solid #3d5a80;ni  ohirgi chizig'ini yo'q qilish uchun */
 }
 
@@ -57,7 +57,12 @@
     transform: translateX(0px);
 }
 
-.list-group-item.increase .list-group-item-label,
-.list-group-item.increase .list-group-item-input {
-color: #aeaeae;
+.list-group-item.favorite .list-group-item-label,
+.list-group-item.favorite .list-group-item-input {
+    color: #e09f3e;
+    /* yani agar list-group-item classlariga favorite classi qo'shilsa rangi #e09f3e shunda o'zgarsin   */
+}
+
+.list-group-item.favorite .btn-star {
+    color: #aeaeae;
 }
