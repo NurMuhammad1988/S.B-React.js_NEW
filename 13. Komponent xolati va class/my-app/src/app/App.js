@@ -46,7 +46,7 @@ class User extends Component {
         //constructor doim eng yuqorida yoziladi
         super(props); //qachonki constructor ishlatilsa super constructorgaga propisni berib qo'yish kerak chunki props object qaytaradi qanday object qaytaradi??? this.stateni ichidagini object qilib qaytaradi yani counterni
         this.state = {
-            //this.state yani qandaydur holat//State React ilovasini yaratishda malumot yoki malumotlarni saqlash va boshqarish usulidir . satate  bu veb-sahifadagi real vaqtda malumotlar yoki malumotlarni o'z ichiga olgan JavaScript objekti//statew har doim object bo'ladi//state bo'lgani uchun bu objectni o'zgartirish mumkun
+            //this.state yani qandaydur holat//State React ilovasini yaratishda malumot yoki malumotlarni saqlash va boshqarish usulidir  satate  bu veb-sahifadagi real vaqtda malumotlar yoki malumotlarni o'z ichiga olgan JavaScript objekti//state har doim object bo'ladi//state bo'lgani uchun bu objectni o'zgartirish mumkun
             counter: 10, //counter bu holatd ahuddi bir o'zgaruvchiday yani object
         };
     }
@@ -85,7 +85,7 @@ class User extends Component {
     };
     /////////////////////////////////////////////////////////////////////////////////////////
     render() {
-        const { firstName, lastName, link } = this.props;
+        const { firstName, lastName, link } = this.props;//firstName, lastNamelar propsdan kelayotganligini jsxga aytib qo'yildi  endi calit so'z hissoblangan thisni yozish shartmas
         return (
             <div className="w-50 mx-auto ">
                 <div className="border p-3 mt-5">
