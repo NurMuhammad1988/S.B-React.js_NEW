@@ -1,4 +1,4 @@
-// //// Props (propertiesni qisqartrilgani)
+// // Props (propertiesni qisqartrilgani)
 // import "./App.css";
 // const User = (props) => {
 //     // console.log(props);//propertiesni qisqartrilgani props //props bo'sh object hissoblanadi shu asbab bu User componenti App fileda chaqirilganda bu objectga qiymat berish mumkun yani hohlagancha qiymat berib qayta qayta ishlatish mumkun chunki props bo'sh object qaytaradi uni Appda chaqiriganda objectga qiymatlar beriladi//bu uchun props component o'zgaruvchini parametrida chaqirilgan bo'lishi kerak
@@ -61,7 +61,7 @@
 // export default App;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-////PROPSLARGA yani App jsga chaqiriladigan componentlar ichiga funksiyalar berish (callback)
+//PROPSLARGA yani App jsga chaqiriladigan componentlar ichiga funksiyalar berish (callback)
 import "./App.css";
 const User = ({ firstName, lastName, link }) => {
     return (
@@ -100,3 +100,5 @@ const App = () => {
 };
 
 export default App;
+
+

@@ -47,7 +47,7 @@ class User extends Component {
         super(props); //qachonki constructor ishlatilsa super constructorgaga propisni berib qo'yish kerak chunki props object qaytaradi qanday object qaytaradi??? this.stateni ichidagini object qilib qaytaradi yani counterni
         this.state = {
             //this.state yani qandaydur holat//State React ilovasini yaratishda malumot yoki malumotlarni saqlash va boshqarish usulidir  satate  bu veb-sahifadagi real vaqtda malumotlar yoki malumotlarni o'z ichiga olgan JavaScript objekti//state har doim object bo'ladi//state bo'lgani uchun bu objectni o'zgartirish mumkun
-            counter: 10, //counter bu holatd ahuddi bir o'zgaruvchiday yani object
+            counter: 10, //counter bu holatda huddi bir o'zgaruvchiday yani object
         };
     }
 
