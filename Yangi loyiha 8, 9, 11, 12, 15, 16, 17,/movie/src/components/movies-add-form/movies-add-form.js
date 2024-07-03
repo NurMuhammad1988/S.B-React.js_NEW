@@ -27,10 +27,12 @@ class MoviesAddForm extends Component {
 
     render() {
         const { name, views } = this.state;
+        const { addForm } = this.props; //yani app.jsda yaratilgan addForm funksyasi props qilib chaqirib olindi yani propisdan chaqirib olindi
         return (
             <div className="movies-add-form">
                 <h3>Yangi kino qo'shish</h3>
-                <form className="add-form d-flex">
+                <form className="add-form d-flex" onSubmit={(e) => addForm (e,{name, views})}>
+                    {/*  */}
                     <input
                         type="text"
                         className="form-control new-post-label"

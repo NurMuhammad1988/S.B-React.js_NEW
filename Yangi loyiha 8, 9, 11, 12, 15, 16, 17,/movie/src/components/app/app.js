@@ -4,6 +4,7 @@ import AppInfo from "../app-info/app-info";
 import SearchPanel from "../search-panel/search-panel";
 import MovieList from "../movie-list/movie-list";
 import MoviesAddForm from "../movies-add-form/movies-add-form";
+import { v4 as uuidv4 } from "uuid"; //npm i uuid kutubhonasi dataga user inputlarga malumot yozganda dataga dynamic keladigan objectlarni idisnini qo'yib beradigan kutubhona yani movie papkaga yuklangandan keyin shunday import qilinishi  kerak
 import "./app.css";
 
 class App extends Component {
@@ -32,7 +33,7 @@ class App extends Component {
         // console.log("servercha");//logda nima vazifa bajarayotganini ko'rish uchun
         // console.log(id);//yani vu ondelete funksiyasi chaqirilgan trash classli buttonda qaysi idilarga bosilayotganini ko'rish uchun yozildi
 
-        this.setState(({ data }) => {
+        this.setState(({ data }) => ({
             //parametrdagi data yuqoridagi this.statega teng
 
             //HATO yani Mutable!!!
@@ -42,14 +43,29 @@ class App extends Component {
             //HATO yani Mutable!!!
 
             /////////// immutable yani reactda o'zgaruvchini funksiya orqali o'zgartirish
-            const newArr = data.filter((c) => c.id !== id); //yani bu yangi data hissoblanadi yani data serverchani nusxalab massivda qaytaradi filter metodi//
+            // const newArr = data.filter((c) => c.id !== id); //yani bu yangi data hissoblanadi yani data serverchani nusxalab massivda qaytaradi filter metodi//
+            // // console.log(newArr); //yani newArr o'zgaruvchida endi data yani servercha bor ondelete chaqirilgan trash classli funksiyaga bosganda ondelete ishlab logda ko'rganda hamma datalar keletganini ko'rish mumkun//endi bu newArr o'zgaruvchi sababli ondelete funksiyasi ishlaganda yani ondelete funksiyasi props qilib MovieList jo'natilgan MovieListda map qilib MovieListItemda props qilib distruptatsa bilan chaqirilgan MovieListItemdagi trash classi bor button bosilganda MovieListItemga chaqirilgan datani name va viewers elementlari udalit bo'ladi
+            // return {
+            //     data: newArr, //yani endi yuoqridagi data servercha newArrga o'zgardi newarrda esa shu data filter qilingan filter qilinganda esa filter yangi massiv qaytaradi yani datani nusxaalab yangi massiv qaytaradi shunday yo'l bilan reactda datalarni yani o'zgaruvchilarni o'zgartirish mumkun
+            // };
+            // const newArr = data.filter((c) => c.id !== id); //yani bu yangi data hissoblanadi yani data serverchani nusxalab massivda qaytaradi filter metodi//
             // console.log(newArr); //yani newArr o'zgaruvchida endi data yani servercha bor ondelete chaqirilgan trash classli funksiyaga bosganda ondelete ishlab logda ko'rganda hamma datalar keletganini ko'rish mumkun//endi bu newArr o'zgaruvchi sababli ondelete funksiyasi ishlaganda yani ondelete funksiyasi props qilib MovieList jo'natilgan MovieListda map qilib MovieListItemda props qilib distruptatsa bilan chaqirilgan MovieListItemdagi trash classi bor button bosilganda MovieListItemga chaqirilgan datani name va viewers elementlari udalit bo'ladi
 
-            return {
-                data: newArr, //yani endi yuoqridagi data servercha newArrga o'zgardi newarrda esa shu data filter qilingan filter qilinganda esa filter yangi massiv qaytaradi yani datani nusxaalab yangi massiv qaytaradi shunday yo'l bilan reactda datalarni yani o'zgaruvchilarni o'zgartirish mumkun
-            };
+            data: data.filter((c) => c.id !== id), //yani endi yuoqridagi data servercha newArrga o'zgardi newarrda esa shu data filter qilingan filter qilinganda esa filter yangi massiv qaytaradi yani datani nusxaalab yangi massiv qaytaradi shunday yo'l bilan reactda datalarni yani o'zgaruvchilarni o'zgartirish mumkun
+
             /////////// immutable yani reactda o'zgaruvchini funksiya orqali o'zgartirish
+        }));
+    };
+
+    addForm = (e, item) => {
+        e.preventDefault(); 
+
+        this.setState(({ data }) => {
+            const newArr = [...data,{...item, id: uuidv4()}]; //yani uuidv4()<<kutubhonasi npm i uuid qilib  yuklanib shunday ishlatilsa dataga user tomonidan MoviesAddFormdagi inputlarga qo'shiladigan yangi massivlarga id qo'shib beradi shunda data serverchaga dynamic qo'shiladigan objectlarniham o'z aydisi bo'ladi
+            //// bu holatda addForm funksiyasi yaratilib parametriga event yani hodisa yani addForm funksiyasi chaqiriladigan joyda (inputlarda) sodir bo'ladigan hodisa va itemlar yani data serverchani itemlari chaqirilib keyin parametrdagi eventga hodisa ilindi yani e.preventDefault()qilib inputda hodisa sodir bo'lganda butun sayt qayta yuklanmaydigan qilindi va this.setstate qilinib dataservercha chaqirildi va  newArr nomli massiv yaratib unga datani malumotlari spread operator bilan nusxalab massiv qilib olindi va datani itemlariham yani datani obshi ichidagi itemlari yani elementlariham spread operator bilan nusxalab massiv qilinib bu itemlarni idesi uuidv4 kutuhonasiga chaqirib qo'yildi shunda  yangi user tomonidan qo'shiladigan datani yangi elementlariga id uuidv4 tomonidan aftamatik tarzda unique yani har hil idlar qo'shiladi          
+            // console.log(newArr);//data serverchaga yangi qo'shilayotgan elementlarni va idilarini array ichida object sifatida ko'rish uchun yozildi
         });
+        // console.log(item);//dataga yangi qo'shiladigan elementni yani itemni ko'rish uchun
     };
 
     render() {
@@ -65,7 +81,8 @@ class App extends Component {
                     </div>
                     <MovieList data={data} onDelete={this.onDelete} />
                     {/* data yani servercha MovieListga huddiki props qilib berildi va ondelete   funksiyasiham movielistga shunday jo'natildi yani class bo'lgani uchun this kalit so'zi bilan jo'natildi va movielsitda parametrida chaqirib olindi */}
-                    <MoviesAddForm />
+                    <MoviesAddForm addForm={this.addForm} />
+                    {/* MoviesAddForm.jsga yuqoridagi addForm funksiyasi props sifatida jo'natildi  */}
                 </div>
             </div>
         );
