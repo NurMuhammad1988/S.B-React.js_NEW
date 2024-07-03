@@ -4,7 +4,7 @@ import AppInfo from "../app-info/app-info";
 import SearchPanel from "../search-panel/search-panel";
 import MovieList from "../movie-list/movie-list";
 import MoviesAddForm from "../movies-add-form/movies-add-form";
-import { v4 as uuidv4 } from "uuid"; //npm i uuid kutubhonasi dataga user inputlarga malumot yozganda dataga dynamic keladigan objectlarni idisnini qo'yib beradigan kutubhona yani movie papkaga yuklangandan keyin shunday import qilinishi  kerak
+//// import { v4 as uuidv4 } from "uuid"; //npm i uuid kutubhonasi dataga user inputlarga malumot yozganda dataga dynamic keladigan objectlarni idisnini qo'yib beradigan kutubhona yani movie papkaga yuklangandan keyin shunday import qilinishi  kerak<<<  //////MoviesAddForm da yozilgan addFormHnadler funksiyasidan oldingi holatdi
 import "./app.css";
 
 class App extends Component {
@@ -57,16 +57,33 @@ class App extends Component {
         }));
     };
 
-    addForm = (e, item) => {
-        e.preventDefault(); 
+    // addForm = (e, item) => {
+    //     e.preventDefault();
 
-        this.setState(({ data }) => {
-            const newArr = [...data,{...item, id: uuidv4()}]; //yani uuidv4()<<kutubhonasi npm i uuid qilib  yuklanib shunday ishlatilsa dataga user tomonidan MoviesAddFormdagi inputlarga qo'shiladigan yangi massivlarga id qo'shib beradi shunda data serverchaga dynamic qo'shiladigan objectlarniham o'z aydisi bo'ladi
-            //// bu holatda addForm funksiyasi yaratilib parametriga event yani hodisa yani addForm funksiyasi chaqiriladigan joyda (inputlarda) sodir bo'ladigan hodisa va itemlar yani data serverchani itemlari chaqirilib keyin parametrdagi eventga hodisa ilindi yani e.preventDefault()qilib inputda hodisa sodir bo'lganda butun sayt qayta yuklanmaydigan qilindi va this.setstate qilinib dataservercha chaqirildi va  newArr nomli massiv yaratib unga datani malumotlari spread operator bilan nusxalab massiv qilib olindi va datani itemlariham yani datani obshi ichidagi itemlari yani elementlariham spread operator bilan nusxalab massiv qilinib bu itemlarni idesi uuidv4 kutuhonasiga chaqirib qo'yildi shunda  yangi user tomonidan qo'shiladigan datani yangi elementlariga id uuidv4 tomonidan aftamatik tarzda unique yani har hil idlar qo'shiladi          
-            // console.log(newArr);//data serverchaga yangi qo'shilayotgan elementlarni va idilarini array ichida object sifatida ko'rish uchun yozildi
-        });
-        // console.log(item);//dataga yangi qo'shiladigan elementni yani itemni ko'rish uchun
+    //     this.setState(({ data }) => {
+
+    //         //////MoviesAddForm da yozilgan addFormHnadler funksiyasidan oldingi holatdi
+    //         const newArr = [...data, { ...item, id: uuidv4() }]; //yani uuidv4()<<kutubhonasi npm i uuid qilib  yuklanib shunday ishlatilsa dataga user tomonidan MoviesAddFormdagi inputlarga qo'shiladigan yangi massivlarga id qo'shib beradi shunda data serverchaga dynamic qo'shiladigan objectlarniham o'z aydisi bo'ladi
+    //         // //// bu holatda addForm funksiyasi yaratilib parametriga event yani hodisa yani addForm funksiyasi chaqiriladigan joyda (inputlarda) sodir bo'ladigan hodisa va itemlar yani data serverchani itemlari chaqirilib keyin parametrdagi eventga hodisa ilindi yani e.preventDefault()qilib inputda hodisa sodir bo'lganda butun sayt qayta yuklanmaydigan qilindi va this.setstate qilinib dataservercha chaqirildi va  newArr nomli massiv yaratib unga datani malumotlari spread operator bilan nusxalab object qilib olindi chunki aslida data massiv edi ... uchta nuqta bilan endi object bo'ldi va datani itemlariham yani datani obshi ichidagi itemlari yani elementlariham spread operator bilan nusxalab object qilinib bu itemlarni idesi uuidv4 kutuhonasiga chaqirib qo'yildi shunda  yangi user tomonidan qo'shiladigan datani yangi elementlariga id uuidv4 tomonidan aftamatik tarzda unique yani har hil idlar qo'shiladi
+    //         // // console.log([...data]); //yani 3 ta obarray ichidagi nusxalanagan objectlarni ko'rish mumkun
+
+    //         return {
+    //             data: newArr, //yani endi data servercha newArrga return qiladi nimani???MoviesAddFormdagi inputlarga qo'shiladigan yangi elementlarni data serverchaga qo'shadi va MoviesAddFormga yangi qo'shiladigan itemlar name va views qiymatlar sabab MovieListItemdagi style classlardan vorislanib MovieListItemga novbatdagi yani data serverchadagi 3 ta elementdan keyin 4 chi element bo'lib uchta elementdagdi stylelari bilan bir hil bo'lib qo'shiladi
+    //         };
+    //         //////MoviesAddForm da yozilgan addFormHnadler funksiyasidan oldingi holatdi
+
+    //         // console.log(newArr);//data serverchaga yangi qo'shilayotgan elementlarni va idilarini array ichida object sifatida ko'rish uchun yozildi
+    //     });
+    //     // console.log(item);//dataga yangi qo'shiladigan elementni yani itemni ko'rish uchun
+    // };
+
+    addForm = (item) => {
+        ////addForm funsksiyasini qisqartirib yozish
+        this.setState(({ data }) => ({
+            data: [...data, item],
+        }));
     };
+    ////addForm funsksiyasini qisqartirib yozish
 
     render() {
         const { data } = this.state; //yani renderni ichiga yani jsx fileni ichiga props shunday this kalit so'zi bilan distruptatsa qilib chaqirilib jsxni ichida render bo'lib yani js kodlar html kodlar bilan birga ishlayveradi

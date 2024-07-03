@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { v4 as uuidv4 } from "uuid";
 import "./movies-add-form.css";
 
 ////Mutable va immutable Mutable O'ZGARUVCHAN O'ZGARUVCHI immutable o'zgarmas o'zgaruvchi yani to'g'ridan to'g'ri o'zgarmaydi immutableni to'g'ridan to'g'ri o'zgartirib bo'lmaydi imutubleni o'zgartirish uchun funksiya kerak
@@ -25,14 +26,30 @@ class MoviesAddForm extends Component {
         });
     };
 
+    addFormHandler = (e) => {
+        e.preventDefault();
+        this.props.addForm({
+            name: this.state.name,
+            viewers: this.state.views,
+            id: uuidv4(),
+        }); ////////MoviesAddForm da yozilgan addFormHnadler funksiyasidan oldingi holatlar deb chernavikka olingan funksiyalarni commentlarini o'qishni yoki bu funksiyani chernavikga olib MoviesAddForm da yozilgan addFormHnadler funksiyasidan oldingi holatlarini ko'rib chiqish kerak!!!
+        this.setState({
+            name:"",
+            views:""
+        })
+    };
+
     render() {
         const { name, views } = this.state;
-        const { addForm } = this.props; //yani app.jsda yaratilgan addForm funksyasi props qilib chaqirib olindi yani propisdan chaqirib olindi
+        // const { addForm } = this.props;//// addFormHnadler funksiyasidan oldingi holatdi// //yani app.jsda yaratilgan addForm funksyasi props qilib chaqirib olindi yani propisdan chaqirib olindi
         return (
             <div className="movies-add-form">
                 <h3>Yangi kino qo'shish</h3>
-                <form className="add-form d-flex" onSubmit={(e) => addForm (e,{name, views})}>
-                    {/*  */}
+                <form
+                    className="add-form d-flex"
+                    onSubmit={this.addFormHandler}
+                >
+                    {/* addFormHnadler funksiyasidan oldingi holatdi {(e) => addForm(e, { name, viewers: views })}  yani  viewers yani data serverchadagi viewers views ga yani MoviesAddFormdagi bo'sh viewsga teng yani shudna viewsga viewersga tushadigan qiymatlar yoziladi yani datadagi viewersga input orqali tushgan malumot views bo'sh objectiga tushadi buni input qayerdan biladi  chunki inputga valuesiga views chaqirib qo'yilgan*/}
                     <input
                         type="text"
                         className="form-control new-post-label"
