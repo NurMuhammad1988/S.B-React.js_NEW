@@ -15,31 +15,61 @@ class App extends Component {
                 //datani yani malumotlar bazasini Appda eng yuqoriga qo'yish kerak //bu local server// yani real loyihalarda datalar serverda turadi darsda server yo'qligi sababli serverni qo'lda shunday yozib turuldi server doim hamma componentlardan yuqorida yozilishi kerak chunki agar data bu holatda Appni ichida ishlatilganda yuqorida yozlishi yani turishi kerak chunki datalar Appni ichida hohlagan componentda chaqirilishi mumkun shu sabab server tepada turishi kerak shunda pastda hohlagan componentda serverdan malumotlar chaqirilsa kod o'qish tartibi bo'yicha server kodlar birinchi o'qilib tayyor qilinib pastdagi comonentlarda ishlaydi (boradi) masalan user SearchPaneldagi inputdan malumot izlasa serverdan keladi server tepada tursa koddagi vazifalar bajarilib bo'linib SearchPnaeldan user malumot izlaganda malumotlar tayyor bo'lib turadi qolgan componentlardaham shunga o'hshash vazifalar bor //serverdan malumotlar massivni ichida (toString and so on) object bo'lib keladi
                 {
                     name: "Emire of Usman",
-                    viewers: 988,
+                    viewers: 9288,
                     favorite: false,
                     like: false,
                     id: 1,
                 },
                 {
                     name: "Ertugrul",
-                    viewers: 791,
+                    viewers: 7291,
                     favorite: false,
                     like: false,
                     id: 2,
                 },
                 {
                     name: "Omar",
-                    viewers: 1091,
+                    viewers: 11091,
                     favorite: false,
                     like: false,
                     id: 3,
                 },
-                // { name: "Alparslan", viewers: 10911, favorite: true, id: 972 },
+
+                {
+                    name: "Iskanja",
+                    viewers: 212,
+                    favorite: false,
+                    like: false,
+                    id: 4,
+                },
+                {
+                    name: "Istanbul",
+                    viewers: 142,
+                    favorite: false,
+                    like: false,
+                    id: 5,
+                },
+
+                {
+                    name: "Qatar",
+                    viewers: 574,
+                    favorite: false,
+                    like: false,
+                    id: 6,
+                },
+                {
+                    name: "Doha",
+                    viewers: 465,
+                    favorite: false,
+                    like: false,
+                    id: 7,
+                },
             ],
+
+            term: "", //bu term bo'sh o'zgaruvchi desaham bo'ladi searchpanel.jsdagi inputga tushadigan malumotlarni saqlab turish uchun
+            filter: "all",
         };
     }
-    // const
-    //
 
     onDelete = (id) => {
         //yani bu ondelete funksiyasi pastda movielistga props qilib jo'natildi
@@ -52,7 +82,7 @@ class App extends Component {
             //HATO yani Mutable!!!
             // const index = data.findIndex((c) => c.id === id);
             // // console.log(index);
-            // data.splice(index, 1 )//HATO yani Mutable!!!//datani to'g'ridan to'g'ro=i o'zgartirish bu esa reactda mumkun emas
+            // data.splice(index, 1 )//HATO yani Mutable!!!//datani to'g'ridan to'g'ri o'zgartirish bu esa reactda mumkun emas
             //HATO yani Mutable!!!
 
             /////////// immutable yani reactda o'zgaruvchini funksiya orqali o'zgartirish
@@ -91,19 +121,19 @@ class App extends Component {
     // };
 
     addForm = (item) => {
-        ////addForm funsksiyasini qisqartirib boshqacha??? yozish
+        ////addForm funsksiyasini qisqartirib boshqacha yozilgani???
         const newItem = {
             name: item.name,
             viewers: item.viewers,
-            id: uuidv4(),
-            favorite: false,
-            like: false,
+            id: uuidv4(), //user tomonidan dataga dynamic qo'shiladigan massiv ichidagi objectlarni idisini qo'yib beradigan kutubhona
+            favorite: false, //yani inputga user tomonidan yangi element qo'shilganda default holati yani cssdagi favorite classini default holati false bo'lib turadi  ////yani datadagi favorite:false like:false kodlarni bu addform funskiyasiga aloqasi yo'q chunki datadagi false truelar datada berilgan boshlang'ich objectlarga tegishli addForm metodida esa yangi qo'shiladigan qiymatlarga bi false va true dynamic berib qo'yildi
+            like: false, //yani inputga user tomonidan yangi element qo'shilganda default holati yani cssdagi like classini default holati false bo'lib turadi ////yani datadagi favorite:false like:false kodlarni bu addform funskiyasiga aloqasi yo'q chunki datadagi false truelar datada berilgan boshlang'ich objectlarga tegishli addForm metodida esa yangi qo'shiladigan qiymatlarga bi false va true dynamic berib qo'yildi
         };
         this.setState(({ data }) => ({
             data: [...data, newItem],
         }));
     };
-    ////addForm funsksiyasini qisqartirib boshqacha??? yozish
+    ////addForm funsksiyasini qisqartirib boshqacha yozilgani???
 
     //////////////////////////////////////////////////////////////////////////////////////////////////
     // onToggleFavorite = (id) => {
@@ -116,7 +146,7 @@ class App extends Component {
     //             return item;
     //         }),
     //     }));
-    // };kod ikkita bir hil bo'lib ketganligi uchun bitta onToggleProp nomli funksiya yozildi
+    // };//kod ikkita bir hil bo'lib ketganligi uchun bitta onToggleProp nomli funksiya yozildi
 
     // onToggleLike = (id) => {
     //     this.setState(({ data }) => ({
@@ -128,7 +158,7 @@ class App extends Component {
     //             return item;
     //         }),
     //     }));
-    // };kod ikkita bir hil bo'lib ketganligi uchun bitta onToggleProp nomli funksiyaga yozildi
+    // };//kod ikkita bir hil bo'lib ketganligi uchun bitta onToggleProp nomli funksiyaga yozildi
     // };
 
     onToggleProp = (id, prop) => {
@@ -146,23 +176,59 @@ class App extends Component {
 
     //////////////////////////////////////////////////////////////////////////////////////////////////
 
-    render() {
-        const { data } = this.state; //yani renderni ichiga yani jsx fileni ichiga props shunday this kalit so'zi bilan distruptatsa qilib chaqirilib jsxni ichida render bo'lib yani js kodlar html kodlar bilan birga ishlayveradi
+    searchHandler = (arr, term) => {
+        // searchHandler metod funksiyasi ikkita parametr qabul qiladi birinchi array yani data serverni massivi ikkinchi parametr esa term ni yani constructordagi term bo'sh objectini yani inputga tushadigan malumumotlarni saqlab turish uchun ochilgan bo'sh object ""
 
-        const allMoviesCount = data.length
-        const favoriteMovieCount = data.filter(c => c.favorite).length 
+        if (term.length === 0) {
+            //agar termni yani qidiruv inputiga user tomonidan malumot kiritilganda termni uzunligi nol bo'lsa yani input bosh' bo'lsa arrni qaytar yani arr bu holatda data inpurt bo'sh bo'lsa datadann keladigan malumot joyida tursin deyildi
+            return arr;
+        }
+
+        return arr.filter((item) => item.name.toLowerCase().indexOf(term) > -1); //indexOf()metodi massivda Array berilgan elementni topish mumkin bo'lgan birinchi indeksni yoki agar u mavjud bo'lmasa -1 ni qaytaradi -1 yani hech narsa bo'sh input//toLowerCase faqat kichkina hariflardan izlaydi//arr bu holatda data server term esa serverdaga bo;sh object
+    };
+
+    updateTermHandler = (term) => {
+        this.setState({ term });
+    };
+
+    filterHandler = (arr, filter) => {
+        switch (filter) {
+            case "popular":
+                return arr.filter((c) => c.like);
+            case "mostViewers":
+                return arr.filter((c) => c.viewers > 800);
+            default:
+                return arr;
+        }
+    };
+
+
+    updateFilterHandler = filter => this.setState({filter})
+
+
+    render() {
+        const { data, term, filter } = this.state; //yani renderni ichiga yani jsx fileni ichiga props shunday this kalit so'zi bilan distruptatsa qilib chaqirilib jsxni ichida render bo'lib yani js kodlar html kodlar bilan birga ishlayveradi
+
+        const allMoviesCount = data.length; //yani appInfo.jsda BARCHA KINOLAR SONI yozilgan paragrofga datani yani serverni umumiy uzunligi shu o'zgaruvchida olinib appInfoga pastda jo'natildi
+        const favoriteMoviesCount = data.filter((c) => c.favorite).length; //yani appInfodagi Sevimli Filmlar yozilgan paragrofga datani filter metodi bilan filter qilib datani uzunligiga favorite classi bor elementlarni uzunligini yani sosnini qo'shish aytildi yani nechta favorite like qo'shilsa length hususiyati buni sanaydida Sevimli Filmlar bor paragrafga jo'natadi bu uchun paragroflarga funksiya chaqirib qo'yilgan appInfoni parametrida distruptatsa qilinib chaqirilgan
+        const visibleData = this.filterHandler(this.searchHandler(data, term), filter);
 
         return (
             <div className="app font-monospace">
                 <div className="content">
-                    <AppInfo allMoviesCount={allMoviesCount} favoriteMovieCount={favoriteMovieCount} />
+                    <AppInfo
+                        allMoviesCount={allMoviesCount}
+                        favoriteMovieCount={favoriteMoviesCount}
+                    />
 
                     <div className="search-panel">
-                        <SearchPanel />
-                        <AppFilter />
+                        <SearchPanel
+                            updateTermHandler={this.updateTermHandler}
+                        />
+                        <AppFilter filter={filter} updateFilterHandler={this.updateFilterHandler} />
                     </div>
                     <MovieList
-                        data={data}
+                        data={visibleData}
                         onDelete={this.onDelete}
                         onToggleProp={this.onToggleProp}
                     />
@@ -178,11 +244,11 @@ class App extends Component {
 export default App;
 
 ////12. Loyiha. Ro'yhat algoritmi
-//datalarga unikal yani unique "key" berilishi kerak bo'lmasa react hamma datalarni qqaytadan ishlab domga beradi shu sabab propslarga yani datani qiymatlariga unique "key" id berilsa dataga yangi qiymatqo'shilganda yoki o'chirilganda react faqatr idlariga qarab ish qiladi yani yangi qo'shilgan idni o'zinigina qo'shadi yoki udalit qilingda idisiga qarab udalit qilib datani boshqa elementrlariga yani unijak keyi idsi bor elementlariga teginmeydi yani qaytada dom element uchun qurmaydi//yani componenetlarga key berish kerak yani datalarga
+//datalarga unikal yani unique "key" berilishi kerak bo'lmasa react hamma datalarni qaytadan ishlab domga beradi shu sabab propslarga yani datani qiymatlariga unique "key" id berilsa dataga yangi qiymat qo'shilganda yoki o'chirilganda react faqat idlariga qarab ish qiladi yani yangi qo'shilgan idni o'zinigina qo'shadi yoki udalit qilinganda idisiga qarab udalit qilib datani boshqa elementrlariga yani unikal keyi yani idsi bor elementlariga teginmeydi yani qaytada dom element uchun qurmaydi//yani componenetlarga key berish kerak yani datalarga
 //datalarga id berish key degani yani idlar yani iddagi numberlar key hissoblanadi (yani react datada o'zgarish sodir bo'lganda qayta qurmaslik uchun) va bu key data chaqirilib map qilinib itemlari berilgan joyda keylarham berilishi kerak (movielist.js ga qaralsin)
 
-//agar user malumot qo'shsa idlar qanday beriladi??? bu uchun kutubhonalar bor user dataga yani serverga qo'shadigan malumotlarga id qo'yib beradigan kutubhonalar bor
+//agar user malumot qo'shsa idlar qanday beriladi??? bu uchun kutubhonalar bor user dataga yani serverga qo'shadigan malumotlarga id qo'yib beradigan kutubhonalar bor va oddiy funksiya yozibham hamma yangi qo'shiladigan malumotlarga id berish mumkun
 
 ////keyni o'rniga massiv index qaytarishi yani 0 dan???udalit qilinganda datani qiymatlarini joylari o'zgarib ketadi va data buzulib ketadi
 ////12. Loyiha. Ro'yhat algoritmi darsi natijasi appdagi datadagi idlarda!!!
-////browserdagi Расширенияda React Developer Tools nopmli tools bor shu exteyshin yoniq bo'lsa browserda consolelardan eng ohirida components va  Profiler bo'limlari ochiladi shu bo'limlarda yani Componentsda react loyihani browserda qaysi element qanaqa componentsda ekanligini va reactda qilingan saytlarni boshqa malumotlarini bemmalol ko'rish mumkun
+////browserdagi Расширенияda React Developer Tools nopmli tools bor shu exteyshin yoniq bo'lsa browserda consolelardan eng ohirida components va  Profiler bo'limlari ochiladi shu bo'limlarda yani Componentsda react loyihani browserda qaysi element qanaqa componentsda ekanligini va reactda qilingan saytlarni boshqa malumotlarini browserda bemmalol ko'rish mumkun
