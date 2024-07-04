@@ -4,7 +4,7 @@ import AppInfo from "../app-info/app-info";
 import SearchPanel from "../search-panel/search-panel";
 import MovieList from "../movie-list/movie-list";
 import MoviesAddForm from "../movies-add-form/movies-add-form";
-//// import { v4 as uuidv4 } from "uuid"; //npm i uuid kutubhonasi dataga user inputlarga malumot yozganda dataga dynamic keladigan objectlarni idisnini qo'yib beradigan kutubhona yani movie papkaga yuklangandan keyin shunday import qilinishi  kerak<<<  //////MoviesAddForm da yozilgan addFormHnadler funksiyasidan oldingi holatdi
+import { v4 as uuidv4 } from "uuid";
 import "./app.css";
 
 class App extends Component {
@@ -17,10 +17,23 @@ class App extends Component {
                     name: "Emire of Usman",
                     viewers: 988,
                     favorite: false,
+                    like: false,
                     id: 1,
                 },
-                { name: "Ertugrul", viewers: 791, favorite: false, id: 2 },
-                { name: "Omar", viewers: 1091, favorite: true, id: 3 },
+                {
+                    name: "Ertugrul",
+                    viewers: 791,
+                    favorite: false,
+                    like: false,
+                    id: 2,
+                },
+                {
+                    name: "Omar",
+                    viewers: 1091,
+                    favorite: false,
+                    like: false,
+                    id: 3,
+                },
                 // { name: "Alparslan", viewers: 10911, favorite: true, id: 972 },
             ],
         };
@@ -78,26 +91,82 @@ class App extends Component {
     // };
 
     addForm = (item) => {
-        ////addForm funsksiyasini qisqartirib yozish
+        ////addForm funsksiyasini qisqartirib boshqacha??? yozish
+        const newItem = {
+            name: item.name,
+            viewers: item.viewers,
+            id: uuidv4(),
+            favorite: false,
+            like: false,
+        };
         this.setState(({ data }) => ({
-            data: [...data, item],
+            data: [...data, newItem],
         }));
     };
-    ////addForm funsksiyasini qisqartirib yozish
+    ////addForm funsksiyasini qisqartirib boshqacha??? yozish
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    // onToggleFavorite = (id) => {
+    //     this.setState(({ data }) => ({
+    //         //data statega teng yani server setState reactni metodi
+    //         data: data.map((item) => {
+    //             if (item.id === id) {
+    //                 return { ...item, favorite: !item.favorite };
+    //             }
+    //             return item;
+    //         }),
+    //     }));
+    // };kod ikkita bir hil bo'lib ketganligi uchun bitta onToggleProp nomli funksiya yozildi
+
+    // onToggleLike = (id) => {
+    //     this.setState(({ data }) => ({
+    //         //data statega teng yani server setState reactni metodi
+    //         data: data.map((item) => {
+    //             if (item.id === id) {
+    //                 return { ...item, like: !item.like };
+    //             }
+    //             return item;
+    //         }),
+    //     }));
+    // };kod ikkita bir hil bo'lib ketganligi uchun bitta onToggleProp nomli funksiyaga yozildi
+    // };
+
+    onToggleProp = (id, prop) => {
+        // console.log(prop);e.currentTarget.getAttribute("data-toggle")) da holatni ko'rish uchun yozildi
+        this.setState(({ data }) => ({
+            //data statega teng yani server setState reactni metodi
+            data: data.map((item) => {
+                if (item.id === id) {
+                    return { ...item, [prop]: !item[prop] };
+                }
+                return item;
+            }),
+        }));
+    };
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////
 
     render() {
         const { data } = this.state; //yani renderni ichiga yani jsx fileni ichiga props shunday this kalit so'zi bilan distruptatsa qilib chaqirilib jsxni ichida render bo'lib yani js kodlar html kodlar bilan birga ishlayveradi
+
+        const allMoviesCount = data.length
+        const favoriteMovieCount = data.filter(c => c.favorite).length 
+
         return (
             <div className="app font-monospace">
                 <div className="content">
-                    <AppInfo />
+                    <AppInfo allMoviesCount={allMoviesCount} favoriteMovieCount={favoriteMovieCount} />
 
                     <div className="search-panel">
                         <SearchPanel />
                         <AppFilter />
                     </div>
-                    <MovieList data={data} onDelete={this.onDelete} />
-                    {/* data yani servercha MovieListga huddiki props qilib berildi va ondelete   funksiyasiham movielistga shunday jo'natildi yani class bo'lgani uchun this kalit so'zi bilan jo'natildi va movielsitda parametrida chaqirib olindi */}
+                    <MovieList
+                        data={data}
+                        onDelete={this.onDelete}
+                        onToggleProp={this.onToggleProp}
+                    />
+                    {/* data yani servercha MovieListga huddiki props qilib berildi va ondelete   funksiyasiham movielistga shunday jo'natildi yani class bo'lgani uchun this kalit so'zi bilan jo'natildi va movielsitda parametrida chaqirib olindi  */}
                     <MoviesAddForm addForm={this.addForm} />
                     {/* MoviesAddForm.jsga yuqoridagi addForm funksiyasi props sifatida jo'natildi  */}
                 </div>

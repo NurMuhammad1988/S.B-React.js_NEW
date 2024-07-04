@@ -1,5 +1,4 @@
 import { Component } from "react";
-import { v4 as uuidv4 } from "uuid";
 import "./movies-add-form.css";
 
 ////Mutable va immutable Mutable O'ZGARUVCHAN O'ZGARUVCHI immutable o'zgarmas o'zgaruvchi yani to'g'ridan to'g'ri o'zgarmaydi immutableni to'g'ridan to'g'ri o'zgartirib bo'lmaydi imutubleni o'zgartirish uchun funksiya kerak
@@ -31,7 +30,7 @@ class MoviesAddForm extends Component {
         this.props.addForm({
             name: this.state.name,
             viewers: this.state.views,
-            id: uuidv4(),
+           
         }); ////////MoviesAddForm da yozilgan addFormHnadler funksiyasidan oldingi holatlar deb chernavikka olingan funksiyalarni commentlarini o'qishni yoki bu funksiyani chernavikga olib MoviesAddForm da yozilgan addFormHnadler funksiyasidan oldingi holatlarini ko'rib chiqish kerak!!!
         this.setState({
             name:"",
