@@ -52,30 +52,31 @@ class User extends Component {
         };
     }
 
+    ////mutate yani mutatsa o'zgaruvchini  to'g'ridan to'g'ri o'zgartirishga yatiladi
     //// reactda o'zgaruvchini to'g'ridan to'g'ri o'zgartirib bo'lmaydi shu sabab bu clickHandler funksiyasi setState funksiyasi bilan yozildi
     ////setState funksiyasi callback qaytaradi
 
     // clickHandler = () => {
     //     this.setState({
-    //         //{}<<jingalak qavus yangi object qaytarishni bildiradi yani setstate funksiyaga yangi object qaytargin deyildi
-    //         //  counter:this.state.counter + 1//yani clickHandler nomli funksiya yaratib unga this setstate qilib setstate funksiyasi chaqirildi va qiymati 10 bo'lib turgan counter o'zgaruvchini qiymatiga 1 ni qo'sh deyildi va bu clickHandler funksiyasi jsxdagi buttonga onClick qilib cthis bilan chaqirilib qo'yildi yani buttonda onclick hodisasi ilindi va button click bo'lganda counterdagi 10 ga har cklickda 1 qo'shilib boradi
+    //         //{}<<jingalak qavus yangi object qaytarishni bildiradi yani setstate funksiyaga yangi object qaytargin deyildi shunda setstate counterni yangi qiymatiniham yangi objectda qaytaradi
+    //         counter: this.state.counter + 1, //yani clickHandler nomli funksiya yaratib unga this setstate qilib setstate funksiyasi chaqirildi va qiymati 10 bo'lib turgan counter o'zgaruvchini qiymatiga 1 ni qo'sh deyildi va bu clickHandler funksiyasi jsxdagi buttonga onClick qilib cthis bilan chaqirilib qo'yildi yani buttonda onclick hodisasi ilindi va button click bo'lganda counterdagi 10 ga har cklickda 1 qo'shilib boradi yani  o'zgaruvchini, objectni funksiya ichida holatini oncklik bo'lganda o'zgartirdik
 
-    //         //bu kod birinchi holat bu kodni ikkinchi holatdaham boshqacha qilib pastda yozdik chunki mobodo button tez click bo'lganda qotibqolsa bu funksiya bilan clicklarni yani tez bosilib qotib qolgandagi clicklarni yo'qotib qo'yish mumkun shu sabab kod dastur yani sayt qotib qolgandaham click bosilsa clicklarni saqlab qoladigan qilib boshqatdan pastda yozildi//
-
+    //         // bu kod birinchi holat bu kodni ikkinchi holatdaham boshqacha qilib pastda yozdik chunki mobodo button tez click bo'lganda qotib qolsa bu funksiya bilan clicklarni yani tez bosilib qotib qolgandagi clicklarni yo'qotib qo'yish mumkun shu sabab kod dastur yani sayt qotib qolgandaham windowga click bosilsa clicklarni saqlab qoladigan qilib boshqatdan pastda yozildi//
     //     });
     // };
     ///////////////////////////////////////////////////////////////////////////////////////////////
+    ////setState funksiyasi faqatgina constructordan  o'z ichiga chaqirilgan objectlarga tasir qiladi masalan constructor ichida boshqa objectlar bor bo'lsa ularga tasir qilmaydi
     clickHandlerPlus = () => {
-        this.setState((prevState) => ({
+        this.setState((prevState) => ({//(prevstate) yani oldingi holat ()<<dumaloq qavuscha callback funksiyada return degani yani ()<<shu sabab return qiladi nimani return qiladi??? {}<<yangi objectni return qiladi yani jingalak qavus prevstateni yangi objectda qaytar manosini beradi endi bu prevsatateda counterni oldingi holatiham saqlanadi
             //{}<<jingalak qavus yangi object qaytarishni bildiradi yani setstate funksiyaga yangi object qaytargin deyildi parametridagi prevStateda endi oldingi holat bo'ladi yani counter:10 qiymatli o'zgaruvchini oldingi holati bo'ladi
-            counter: prevState.counter + 1, //prevState??? yani prevsatate parametri   oldingi holatga bog'glangan bo'ladi yani objectga hamma holatni saqlab qoladi yani prevsatate parametirda chaqirilganda chaqirilgan objectiga hodisani oldingi holatiniham saqlab qoladi yani bir nechta buttonga nechchi martta bosilsaham hodisalarni yani clicklarni objectga saqlab qoladi hech qanaqa cllickni yo'qotib qo'ymaydi
+            counter: prevState.counter + 1, //prevState??? yani prevsatate parametri   oldingi holatga bog'glangan bo'ladi yani objectga hamma holatni saqlab qoladi masalan constructordan counter o'zgaruvchini kelishi sekinroq bo'lib qolsa yoki internet tezligi sabab qotib qolsa shunda  prevsatate funksiya  parametirda chaqirilganda chaqirilgan objectida yani ichidagi counter objectida hodisani oldingi holatini yangi return qilingan objectda saqlab qoladi yani bir nechta buttonga nechchi martta bosilsaham hodisalarni yani clicklarni objectga saqlab qoladi hech qanaqa clickni yo'qotib qo'ymaydi//yani shu parametr yozilgan funksiyani nechta buttonga chaqirgan bo'lsaham hamma buttonda ishlayveradi
         }));
     };
 
     clickHandlerMinus = () => {
         this.setState((prevState) => ({
             counter: prevState.counter - 1,
-        })); //bu holatda hodisani oldingi holati saqlanib va click bo'lganda minsuga ishlaydi
+        })); //bu holatda hodisani oldingi holati saqlanib va click bo'lganda minsuga ishlaydi yani har bir minisga bposilgan clickni oldingi holatiniham ushlab qoladi yangi objectda
     };
 
     clickHandlerRestart = () => {
@@ -86,7 +87,7 @@ class User extends Component {
     };
     /////////////////////////////////////////////////////////////////////////////////////////
     render() {
-        const { firstName, lastName, link } = this.props; //firstName, lastNamelar propsdan kelayotganligini jsxga aytib qo'yildi  endi calit so'z hissoblangan thisni yozish shartmas
+        const { firstName, lastName, link } = this.props; //firstName, lastNamelar propsdan kelayotganligini jsxga aytib qo'yildi  endi kalit so'z hissoblangan thisni yozish shartmas lekin baribir jsxni ichidafunksiya chaqirilganda this yozilgan???
         return (
             <div className="w-50 mx-auto ">
                 <div className="border p-3 mt-5">
@@ -115,7 +116,6 @@ class User extends Component {
 
                         <button
                             onClick={this.clickHandlerRestart}
-                            // mobodo funksiya onclikga chaqirilganda mani vc code temamda qizil bo'lib qoladi
                             className="btn btn-info"
                         >
                             Restart
