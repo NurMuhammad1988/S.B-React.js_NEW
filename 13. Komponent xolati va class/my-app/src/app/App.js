@@ -10,7 +10,8 @@
 //     // }
 //     render() {
 //         //render metodi jsxni render qilib beradi yani jsxni ui ga ko'rsatib beradi
-//         const { firstName, lastName, link } = this.props;
+//         const { firstName, lastName, link } = this.props;////yani render ichida firsname lastname link ishlatilepti shu sabab jsx bu componentlarni tanishi uchun class componentdagi propslarni bitta o'zgaruvchiga olib distruptatsa qilib this kalit so'zi bilan chaqirish kerak shunda jsx biladiku bu chaqirilgan narsalar propisdan kelayotganligi shunda ishlaydi shu class va funchtion componentlarni asosiy farqi yani function componentda
+//         console.log(this.props); //react classlarda this kalit so'zi
 //         console.log(this.props); //react classlarda this kalit so'zi
 //         return (
 //             <div>
@@ -35,9 +36,9 @@
 // };
 
 // export default App;
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-////state state object hissoblanadi yani       //reactda setState funksiyasi o'zgaruvchini o'zgartirish uchun kerak
+//state state object hissoblanadi yani       //reactda setState funksiyasi o'zgaruvchini o'zgartirish uchun kerak
 import { Component } from "react";
 import "./App.css";
 
@@ -46,8 +47,8 @@ class User extends Component {
         //constructor doim eng yuqorida yoziladi
         super(props); //qachonki constructor ishlatilsa super constructorgaga propisni berib qo'yish kerak chunki props object qaytaradi qanday object qaytaradi??? this.stateni ichidagini object qilib qaytaradi yani counterni
         this.state = {
-            //this.state yani qandaydur holat//State React ilovasini yaratishda malumot yoki malumotlarni saqlash va boshqarish usulidir  satate  bu veb-sahifadagi real vaqtda malumotlar yoki malumotlarni o'z ichiga olgan JavaScript objekti//state har doim object bo'ladi//state bo'lgani uchun bu objectni o'zgartirish mumkun
-            counter: 10, //counter bu holatda huddi bir o'zgaruvchiday yani object
+            //this.state yani qandaydur holat//State React ilovasini yaratishda malumot yoki malumotlarni saqlash va boshqarish metodi hissoblanadi  satate  bu veb-sahifadagi real vaqtda malumotlar yoki bir nechta malumotlarni o'z ichiga olgan JavaScript objekti//state har doim object bo'ladi//state bo'lgani uchun reactda bu objectni o'zgartirish mumkun
+            counter: 10, //counter bu holatda huddi bir o'zgaruvchiday yani object yani counter state object yani o'zgarishi mumkun bo'lgan onject yani react qonuni shuku har qanday o'zgaruvchini to'g'ridan to'g'ri o'zgartirib bo'meydi stae ichidagi o'zgaruvchiniga boshqa funksya bilan o'zgartirib bo'ladi
         };
     }
 
@@ -85,7 +86,7 @@ class User extends Component {
     };
     /////////////////////////////////////////////////////////////////////////////////////////
     render() {
-        const { firstName, lastName, link } = this.props;//firstName, lastNamelar propsdan kelayotganligini jsxga aytib qo'yildi  endi calit so'z hissoblangan thisni yozish shartmas
+        const { firstName, lastName, link } = this.props; //firstName, lastNamelar propsdan kelayotganligini jsxga aytib qo'yildi  endi calit so'z hissoblangan thisni yozish shartmas
         return (
             <div className="w-50 mx-auto ">
                 <div className="border p-3 mt-5">
