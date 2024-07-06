@@ -14,16 +14,8 @@ const AppFilter = ({ updateFilterHandler, filter }) => {
                     type="button"
                 >
                     {btn.label}
-                    {/* yani endi bitta buttonda btnsArr o'zgaruvchi map qilingani sabab btnsArrni hamma qiymatlari map sabab nusxalandi va key bilan btnsArrni label: qiymatlari berib qo'yildi   */}
                 </button>
             ))}
-
-            {/* <button className="btn btn-outline-dark" type="button">
-                Mashxur kinolar
-            </button>
-            <button className="btn btn-outline-dark" type="button">
-                Eng ko'p ko'rilgan kinolar
-            </button> //btnsArr o'zgaruvchi sabab bu ikkita button chernavikga olib turildi */}
         </div>
     );
 };
