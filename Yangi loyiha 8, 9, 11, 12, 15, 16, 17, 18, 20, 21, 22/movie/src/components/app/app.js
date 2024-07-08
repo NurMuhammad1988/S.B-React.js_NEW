@@ -6,6 +6,10 @@ import MovieList from "../movie-list/movie-list";
 import MoviesAddForm from "../movies-add-form/movies-add-form";
 import { v4 as uuidv4 } from "uuid";
 import "./app.css";
+///////////////////////////////////////////////////////////////////////////////////////
+// 8, 9, 11, 12, 15, 16, 17, 18, 20, 21, 22 chi darslarda loyihani BITTA PAPKADA qilish HATO  har bir darsni JavaScript kursidagiday alohida papkada qilish kerak edi!!!!!!!!!!!!!!!!! jahling chiqsa 1 chi modul loyihalariga aloqador darslarni alohoda papkalarda comment bilan bajarib chiq!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+///////////////////////////////////////////////////////////////////////////////////////
+
 
 class App extends Component {
     constructor(props) {
@@ -76,13 +80,13 @@ class App extends Component {
         // console.log("servercha");//logda nima vazifa bajarayotganini ko'rish uchun
         // console.log(id);//yani vu ondelete funksiyasi chaqirilgan trash classli buttonda qaysi idilarga bosilayotganini ko'rish uchun yozildi
 
-        this.setState(({ data }) => ({
-            //parametrdagi data yuqoridagi this.statega teng
+        this.setState(({ data }) => ({//datani parametrni dumaloq qavusidan ichida jingalaq qavusda chaqirilishi shu funksiyani parametrida data object holatda chaqirilganini ifoda qiladi(distruptatsa)
+            //parametrdagi data yuqoridagi this.statega.data massivga teng
 
             //HATO yani Mutable!!!
             // const index = data.findIndex((c) => c.id === id);
             // // console.log(index);
-            // data.splice(index, 1 )//HATO yani Mutable!!!//datani to'g'ridan to'g'ri o'zgartirish bu esa reactda mumkun emas
+            // data.splice(index, 1 )//HATO yani Mutable!!!//datani to'g'ridan to'g'ri o'zgartirish bu esa reactda mumkun emas yani datani chaqirib splice metodi bilan 1 chi indexni udalit qil deyildi lekin har udalit qilganda ikkita elementni udalit qildi shu uchun reactda bu hato huddiki let a = 1 ni a = 2 qilib o'zgartirganday bo'ldi bu reactda mumkun emas
             //HATO yani Mutable!!!
 
             /////////// immutable yani reactda o'zgaruvchini funksiya orqali o'zgartirish
@@ -94,7 +98,7 @@ class App extends Component {
             // const newArr = data.filter((c) => c.id !== id); //yani bu yangi data hissoblanadi yani data serverchani nusxalab massivda qaytaradi filter metodi//
             // console.log(newArr); //yani newArr o'zgaruvchida endi data yani servercha bor ondelete chaqirilgan trash classli funksiyaga bosganda ondelete ishlab logda ko'rganda hamma datalar keletganini ko'rish mumkun//endi bu newArr o'zgaruvchi sababli ondelete funksiyasi ishlaganda yani ondelete funksiyasi props qilib MovieList jo'natilgan MovieListda map qilib MovieListItemda props qilib distruptatsa bilan chaqirilgan MovieListItemdagi trash classi bor button bosilganda MovieListItemga chaqirilgan datani name va viewers elementlari udalit bo'ladi
 
-            data: data.filter((c) => c.id !== id), //yani endi yuoqridagi data servercha newArrga o'zgardi newarrda esa shu data filter qilingan filter qilinganda esa filter yangi massiv qaytaradi yani datani nusxaalab yangi massiv qaytaradi shunday yo'l bilan reactda datalarni yani o'zgaruvchilarni o'zgartirish mumkun
+            data: data.filter((c) => c.id !== id), //yani endi yuoqridagi data servercha newArrga o'zgardi newarrda esa shu data filter qilingan filter qilinganda esa filter yangi massiv qaytaradi yani datani nusxaalab yangi massiv qaytaradi shunday yo'l bilan reactda datalarni yani o'zgaruvchilarni o'zgartirish mumkun//ondelete funksiya ishga tushganda setstate funksiyani ishga tushuradi
 
             /////////// immutable yani reactda o'zgaruvchini funksiya orqali o'zgartirish
         }));
@@ -202,16 +206,17 @@ class App extends Component {
         }
     };
 
-
-    updateFilterHandler = filter => this.setState({filter})
-
+    updateFilterHandler = (filter) => this.setState({ filter });
 
     render() {
         const { data, term, filter } = this.state; //yani renderni ichiga yani jsx fileni ichiga props shunday this kalit so'zi bilan distruptatsa qilib chaqirilib jsxni ichida render bo'lib yani js kodlar html kodlar bilan birga ishlayveradi
 
         const allMoviesCount = data.length; //yani appInfo.jsda BARCHA KINOLAR SONI yozilgan paragrofga datani yani serverni umumiy uzunligi shu o'zgaruvchida olinib appInfoga pastda jo'natildi
         const favoriteMoviesCount = data.filter((c) => c.favorite).length; //yani appInfodagi Sevimli Filmlar yozilgan paragrofga datani filter metodi bilan filter qilib datani uzunligiga favorite classi bor elementlarni uzunligini yani sosnini qo'shish aytildi yani nechta favorite like qo'shilsa length hususiyati buni sanaydida Sevimli Filmlar bor paragrafga jo'natadi bu uchun paragroflarga funksiya chaqirib qo'yilgan appInfoni parametrida distruptatsa qilinib chaqirilgan
-        const visibleData = this.filterHandler(this.searchHandler(data, term), filter);
+        const visibleData = this.filterHandler(
+            this.searchHandler(data, term),
+            filter
+        );
 
         return (
             <div className="app font-monospace">
@@ -225,7 +230,10 @@ class App extends Component {
                         <SearchPanel
                             updateTermHandler={this.updateTermHandler}
                         />
-                        <AppFilter filter={filter} updateFilterHandler={this.updateFilterHandler} />
+                        <AppFilter
+                            filter={filter}
+                            updateFilterHandler={this.updateFilterHandler}
+                        />
                     </div>
                     <MovieList
                         data={visibleData}

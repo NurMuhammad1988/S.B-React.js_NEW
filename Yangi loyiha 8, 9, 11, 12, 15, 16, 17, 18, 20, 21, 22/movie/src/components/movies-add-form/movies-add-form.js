@@ -13,13 +13,14 @@ class MoviesAddForm extends Component {
         };
     }
 
+
     changeHandlerInput = (e) => {
         //unversal funksiya yani 10 ta input bo'lsaham ichiga tushgan qiymatlarni o'ziga saqlab oladi  yani har bir inputga bitt afunksiya yozish yahshimas masalan 10 ta input bo'lsa har biriga bittadan funksiya yozib chiqilmeydi
         // console.log(e);//inputni ichidagi eventni yani hodisani ko'rish uchun yozildi changeHandlerInput funksiyasi ikkala eventgaham onchange qilib chaqirilgani uchun ikkala inputdaham eventlar olindi
 
         this.setState({
             //qandaydur qiymatni o'zgartirish uchun setstate funksiyasi kerak bu holatda object qaytaradi chunku oldingi qiymat kerak emas bu ohirigi qiymat uchun
-            [e.target.name]: e.target.value, //inputlarga kiritiladigan qiymatlarni saqlash (unversal) yani event targetda namesi name bo'lgan inputlarni valuesi olinsin yani bu holatda agar eventni targetida name bor bo'lsa yani shunda name atributi bot inputlarni hammasini qiymatini oladi pastda jsxdaham ikkita inputga name atributi berilgan shu sabab ikkala inputlarga user tomonidan berilayotganqiymatlar ushlab olinepti
+            [e.target.name]: e.target.value, //inputlarga kiritiladigan qiymatlarni saqlash (unversal) yani event targetda namesi name bo'lgan inputlarni valuesi olinsin yani bu holatda agar eventni targetida name bor bo'lsa yani shunda name atributi bor inputlarni hammasini qiymatini oladi pastda jsxdaham ikkita inputga name atributi berilgan shu sabab ikkala inputlarga user tomonidan berilayotgan qiymatlar ushlab olinepti
 
             //yani qandaydur qiymatni o'zgartirish uchun setsate funksiyasi kerak bu setstate object qaytaradi bu holatda ohirgi holat muhum
         });
@@ -48,7 +49,8 @@ class MoviesAddForm extends Component {
                     className="add-form d-flex"
                     onSubmit={this.addFormHandler}
                 >
-                    {/* addFormHnadler funksiyasidan oldingi holatdi {(e) => addForm(e, { name, viewers: views })}  yani  viewers yani data serverchadagi viewers views ga yani MoviesAddFormdagi bo'sh viewsga teng yani shudna viewsga viewersga tushadigan qiymatlar yoziladi yani datadagi viewersga input orqali tushgan malumot views bo'sh objectiga tushadi buni input qayerdan biladi  chunki inputga valuesiga views chaqirib qo'yilgan*/}
+                      
+                    {/* addFormHnadler funksiyasidan oldingi holatdi {(e) => addForm(e, { name, viewers: views })}  yani  viewers yani data serverchadagi viewers views ga yani MoviesAddFormdagi bo'sh viewsga teng yani shunda viewsga viewersga tushadigan qiymatlar yoziladi yani datadagi viewersga input orqali tushgan malumot views bo'sh objectiga tushadi buni input qayerdan biladi  chunki inputga valuesiga views chaqirib qo'yilgan  // boshqarib bo'ladigan form forma */}
                     <input
                         type="text"
                         className="form-control new-post-label"
@@ -57,15 +59,18 @@ class MoviesAddForm extends Component {
                         // onchagega funksiya this kalit so'zi bilanyozilishi kerak chunki bu class funksiya
                         name="name"
                         value={name}
+                        // boshqarib bo'ladigan form forma 
+
                     />
                     <input
                         type="number"
                         className="form-control new-post-label"
                         placeholder="Nechchi marotaba ko'rilgan?"
                         onChange={this.changeHandlerInput}
-                        // onchagega funksiya this kalit so'zi bilanyozilishi kerak chunki bu class funksiya
+                        // onchagega funksiya this kalit so'zi bilan yozilishi kerak chunki bu class funksiya
                         name="views"
                         value={views}
+                        
                     />
                     <button type="submit" className="btn btn-outline-dark">
                         Qo'shish
