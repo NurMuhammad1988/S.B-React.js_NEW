@@ -142,7 +142,7 @@ class App extends Component {
     //////////////////////////////////////////////////////////////////////////////////////////////////
     // onToggleFavorite = (id) => {
     //     this.setState(({ data }) => ({
-    //         //data statega teng yani server setState reactni metodi
+    //         //data statega teng yani server. setState reactni metodi
     //         data: data.map((item) => {
     //             if (item.id === id) {
     //                 return { ...item, favorite: !item.favorite };
@@ -164,6 +164,7 @@ class App extends Component {
     //     }));
     // };//kod ikkita bir hil bo'lib ketganligi uchun bitta onToggleProp nomli funksiyaga yozildi
     // };
+
 
     onToggleProp = (id, prop) => {
         // console.log(prop);e.currentTarget.getAttribute("data-toggle")) da holatni ko'rish uchun yozildi
