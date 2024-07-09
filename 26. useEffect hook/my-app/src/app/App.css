@@ -1,0 +1,59 @@
+/* without bootstrap styles */
+body {
+    background-color: darkslategrey;
+    color: silver;
+    /*  own style = for my eyes */
+}
+
+.btns {
+    width: 25%;
+    height: 60px;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 6px;
+    margin-top: 6px;
+    border: 3px;
+    border-radius: 5px;
+
+}
+
+
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+    color: red;
+}
+
+/* a{
+    color: silver;
+    text-decoration: none;
+    margin-left: 20px;
+}
+a:hover{
+    text-decoration: underline;
+    color: red;
+}
+
+.app{
+    width: 70%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    border-bottom: 1px solid red;
+
+}
+
+.app:first-child{
+    border-top: 1px solid red;
+
+} */
