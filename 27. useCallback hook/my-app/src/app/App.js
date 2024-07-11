@@ -82,7 +82,7 @@ const User = () => {
     const onToggle = () => setActive((prevState) => !prevState);
     //ontoggle funksiyasi chaqirilgan buttonga klik bo'lganda yani active o'zgaruvchini oldingi holati nima bo'lsa o'shani teskarisiga o'zgartiradi>>(!)
 
-    const counterCenerate = useCallback(() => {//useCallback birinchi parametrida funksiya ikkinchi parametrida qaramlikni qabul qiladi nimaga qaramlik??? useCallback faqat qaramligidagi [counter]uchun ishlaydi boshqa funksiyalarni emas faqat shu counterni render qiladi//keshlas!!!
+    const counterCenerate = useCallback(() => {//useCallback birinchi parametrida funksiya ikkinchi parametrida qaramlikni qabul qiladi nimaga qaramlik??? useCallback faqat qaramligidagi [counter]uchun ishlaydi boshqa funksiyalarni emas faqat shu counterni render qiladi//keshlas!!!////yani bu holatda useCallbach bola componentga yani counter-item.jsga alohida yasaldi
         return new Array(counter).fill("").map((_, idx) => `Counter number ${idx + 1}`)
     }, [counter])//QARAMLIK (DEPS)//faqat useCallbach qaysi funksiya yoki o'zgaruvchiga qaram qilinsa faqat osha funksiya yoki o'zgaruvchi o'zgargandagina ishlaydi//shunda increase buttonniga click qilinganda faqat counter ishlab boshqa funksiyalar render bo'lmadi
     // console.log(counterCenerate());//bo'sh array keladi
