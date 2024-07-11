@@ -12,8 +12,6 @@ const bigCountNumber = (number) => {
     return number * 2;
 };
 
-28. useMemo hook darsini qaytadan commentlar bilan qil
-
 const User = () => {
     const [counter, setCount] = useState(0);
     const [active, setActive] = useState(true);
@@ -29,9 +27,11 @@ const User = () => {
         //yani agar active o'zgaruvchi true bo'lsa green qil yokida false bo'lsa red qil bu holatda red turadi chunki activeni default qiymati false bo'lib turipti
     };
 
-    // const number = bigCountNumber(counter);//useMemosiz holatda
+    // const number = bigCountNumber(counter);//useMemosiz holatda qotib ishleydi
 
     const number = useMemo(() => bigCountNumber(counter), [counter]); //useMemo bilan ishlagan holatda yani useMemoham ikkita parametr qabul qiladi birinchisi funksiya ikkinchi useMemo kimga qaram bo'lishi yani dependeses yani usememo faqatgina counter o'zgargandagina ishga tushadi
+
+    ////reactda funskyalar biror bir harakatni amalga oshirganda react sucut bo'yicha shu funskiya bor componentni qaytadan render qiladi yani funksiyalarni hammasini bir ishlatadi useMemo useCallback functionlar shu narsani oldioni oladi masalan saytga user kirib biror bir funskiasi bor formagami buttongga inputgami bosganda hamma funskiya render bo'lib ketmasligi uchun usememo usecallback funksiyalar kerakli joylarda ishlatiladi 
 
     return (
         <div className="w-75 mx-auto mt-5 ">
