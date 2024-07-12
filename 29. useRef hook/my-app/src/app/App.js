@@ -15,7 +15,7 @@
 //         ////yani (asosiy hulosa) cardNumber qiymatli inputni ichidagi qiyam 16ga teng bo'lganda focusni cvcRef linkiga qarat yani cvcRef linki bor inputga qarat
 //         setCardNumber(val);
 //         if (val.length === 16) {
-//             cvcRef.current.focus();
+//             cvcRef.current.focus();//yani agar valni qiymati 16ga teng bo'lsa focusni cvcrefni currentiga qarat currentni qiymati esa null chunki hali hech narsa yozilmagan
 //         }
 //         // console.log(val.length);
 //         // console.log(dataRef);
@@ -72,7 +72,7 @@
 // };
 
 // const App = () => {
-//     return <User firstName="Nur" lastName="Yorov" link="youtube.com" />;
+//     return <User />;
 // };
 
 // export default App;
@@ -109,10 +109,10 @@ const User = () => {
             </div>
         </div>
     );
-};////
-
+};
+////yani bu holatdad cardNumber nomli default holati bo'sh string bo'lgan state yaratib uni setCardNumber nomli useStae qaytaradigan funksiya bilan ishlashni aytdik va cvcRef nomli yangi o;zgaruvchi yaratib unga useRef hookini chaqirdik useRefni parametrida doim null bo'ladi sababi bu nulga yangi qiymatlar tushadi va shunda null holatidan chiqadi va bo'sh hissoblangan cardNumber o'zgaruvchini birinchi inputga value atributi bilan chaqirdik shunda endi birinchi inputga setCardNumberni qiymati tushadi yani bo'sh qiymat va ikkinchi inputga esa ref atributi bilan cvcRef o'zgaruvchida chaqirilgan useRef hookini chaqirdik va birinchi inputga handleInput nomli funskyani onchange bo'lganda ishlashi uchun chaqirdik va handleInput funksiyasida eventniparametrda chaqirib val nomli o'zgaruvchiga eventni ovoldik va buvalni yani eventi setCardNumberfunksiyaga argument qilib chaqirdik va agar valni yani val o'zgaruvchiga chaqirilgan eventni uzunligi 16 bo'lsa ikkinchi inputda ref atributi bilan chaqirilgan cvcRefga focusni qarat deyildi bunga sabab ref atributi yani handleInput funsksiyasi bilan ikkinchi inputni bu holatda ref atributi ulab berepti va handleInput funsksiyasi esa if else bilan valni qiymati 16ga yetganda focusni cvcRefga qaratishni aytepti shunda birinchi inputni uzunligi 16ga yetganda handleInput funskiyasi foucusni pastdagi linki chaqirilgan inputga qaratadi
 const App = () => {
-    return <User firstName="Nur" lastName="Yorov" link="youtube.com" />;
+    return <User />;
 };
 
 export default App;
