@@ -1,12 +1,11 @@
-@import "./variable.scss";
-// scss src papkadan impor qilinishi kerak index.scssga
+@import './variables.scss';
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-body{
-  background-color: $my-color;
+body {
+	background-color: $my-color;
 }
