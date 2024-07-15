@@ -40,14 +40,14 @@ class User extends Component {
     } //componentDidMount metodi saytga kirgandan ishlaydi masalan user saytga kirganda sayt birinchi mounting bo'ladi
 
     componentDidUpdate() {
-        document.title = `Counter: ${this.state.counter}`; //yani bu title htmli titlesi (DOM) bu holatda htmldagi title o'zgariv counter o'zgaruvchini qiymati titlega o'tdi va har bir clikda update ishladi
+        document.title = `Counter: ${this.state.counter}`; //yani bu title htmli titlesi (DOM) bu holatda htmldagi title o'zgarivchi counter o'zgaruvchini qiymati titlega o'tdi va har bir clikda update ishladi
         console.log("Update");
     } //componentDidUpdate user saytga kirgandan keyin harakatlar qilganda ishlaydi har bir clickda ishlaydi
 
     componentWillUnmount() {
         alert("Component will Unmount");
         console.log("Unmount");
-    } //loyihadan qandaydur component udalit bo'lsa Unmount ishleydi va alerta habarham berildi
+    } //loyihadan qandaydur component udalit bo'lsa Unmount ishleydi va alertga habarham berildi
 
     render() {
         const { firstName, lastName, link } = this.props;
