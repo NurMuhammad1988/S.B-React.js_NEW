@@ -53,55 +53,55 @@
 // export default App;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-import { useState } from "react";
 ////yuqoridagi darsda ikkita input uchun funksiyalar yozildi bu uchun ikki martta useState chaqirildi masalan loyihada ikkita emas 5 10 ta shunaqa ishlov berilishi kerak bo'lgan inputlar bor bo'lsa 5 10 marttalab useStateni chaqirib ishlashga to'g'ri keladi shu sabab bu holatdan qochish uchun reactda bor 18 ta hookdan tashqari dasturchi o'ziham shaxsiy hook funskiya yozishi mumkun shunda kodlar uzun va tushunarsiz bo'lib ketishini oldi olingan bo'ladi
 
-////yani shaxsiy hookni hohlagancah nomlash mumkun lekin reactda hooklar use bilan boshlangani uchun useInputValidation deb yozilishi bu dasturchini shaxsiy hooki ekanligini tushunish oson bo'lishi uchun boshiga use so'zi qo'yiladi
-const useInputValidation = (initialValue) => {////custom hook
-    const [value, setValue] = useState(initialValue);
-    ////yani custom hookda useState hooki baribir bir martta chaqirilishi kerakchunki reactda o'zgaruvchilarni to'g'ridan to'g'ri o'zgartirib bo'lmaydi useState bilan o'zgartirib bo'ladi yani funksiya bilan o'zgartirish kerak
-
-    //bu holatda useInputValidation nomli shaxsiy hook ochib uni birinchi parametriga value nomli objectni  boshlang'ich qiymatiga useInputValidationda chaqirilgan  initialValue parametri chaqirildi bu initialValue  parametri validateInput funksiyasidagi aftamatik  tarzda sodir bo'ladigan if else uchun kerak
-    const onChange = e => {
-        setValue(e.target.value);
-    };//onchange nomli funkjsiya yasab event olindi va bu even setStaetini objecti setValuega jo'natib qo'yildi endi setValueda inputlarga tushadigan qiymatlar bor bo'ladi va ichida eventni valeular bor bo'lgan useStateni set o'zgaruvchisi onchange funksiyasini ichida onchange funksiyasini esa jsxga kerakli inputga chaqirib qo'yiladi
-
-    const validateInput = () => {
-        return value.search(/\d/) >= 0;
-    };
-
-    return {value, onChange, validateInput}
-
-};
+import useInputValidation from "../../hook/useInputValidate";
 
 const User = () => {
-
-  const firstname = useInputValidation("")
-  const lastname = useInputValidation("")
-
-
-    const validateColorFirstname = firstname.validateInput() ? "text-danger": null;
-    const validateColorLastname = lastname.validateInput() ? "text-danger": null;
-
+    const firstname = useInputValidation("");
+    const lastname = useInputValidation("");
+    const thirt = useInputValidation("");
+    const four = useInputValidation("");
+    ////yani bu holatda bitta hook to'rtta inputga ishladi yani usestatelar ko'paymadi va bunaqa shaxsiy hooklar alohoida papkada alohida har fileda turgani yahshi appga aralashmasdan!!!
 
     return (
         <div className="w-50 mx-auto mb-5">
             <div className="border p-3 mt-5">
                 <p className="text-center fs-3 text-white">Register</p>
                 <div className="d-flex gap-3">
+                    {/* 1*/}
                     <input
                         type="text"
-                        className={`form-control ${validateColorFirstname}`}
+                        className={`form-control ${firstname.valiDateColor}`}
                         placeholder="Firstname"
                         value={firstname.value}
+                        // bu holatda value shu inputni eventi shu valuega setValue sabab eventlar tushadi va firsname objectidagi bo'sh stringga tushadi
                         onChange={firstname.onChange}
+                        //firstame bo'sh objectida change bo'lganda yani inputda qandaydur hodisa sodir bo'lganda onchange funksiyasi ishlasin
                     />
+                    {/* 2 */}
                     <input
                         type="text"
-                        className={`form-control ${validateColorLastname}`}
+                        className={`form-control ${lastname.valiDateColor}`}
                         placeholder="Lastname"
                         value={lastname.value}
                         onChange={lastname.onChange}
+                    />
+                    {/* 3 */}
+                    <input
+                        type="text"
+                        className={`form-control ${thirt.valiDateColor}`}
+                        placeholder="Thirt name"
+                        value={thirt.value}
+                        onChange={thirt.onChange}
+                    />
+                    {/* 4 */}
+                    <input
+                        type="text"
+                        className={`form-control ${four.valiDateColor}`}
+                        placeholder="Four name"
+                        value={four.value}
+                        onChange={four.onChange}
                     />
                 </div>
                 <button className="mt-3 btn btn-success w-25">Send data</button>
