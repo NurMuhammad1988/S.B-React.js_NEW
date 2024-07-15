@@ -1,4 +1,4 @@
-import './app-info.scss'
+// import './app-info.scss'
 
 const AppInfo = ({ allMoviesCount, favouriteMovieCount }) => {
 	return (
@@ -8,5 +8,6 @@ const AppInfo = ({ allMoviesCount, favouriteMovieCount }) => {
 		</div>
 	)
 }
+//allMoviesCount, favouriteMovieCount shu parametrlar nima va qayerdan kelepti??? manimcha bu parametrlar he qayerda yoq va hech qanday vazifani bajarmayapti
 
 export default AppInfo
