@@ -1,4 +1,4 @@
-// import './app-info.scss'
+
 
 const AppInfo = ({ allMoviesCount, favouriteMovieCount }) => {
 	return (
