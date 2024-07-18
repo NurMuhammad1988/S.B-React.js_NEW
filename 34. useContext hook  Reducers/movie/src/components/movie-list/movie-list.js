@@ -5,30 +5,19 @@ import { useContext } from "react";
 import { Context } from "../../context";
 import { searchHandler, filterHandler } from "../../utilities/data";
 
-const MovieList = ({  onToggleProp }) => {
+const MovieList = () => {
 
-    const { state, dispatch } = useContext(Context);
-    const data = filterHandler(
-        searchHandler(state.data, state.term),
-        state.filter
-    );
+
+    const { state} = useContext(Context);
+    const data = filterHandler(searchHandler(state.data, state.term), state.filter);
 
     return (
         <ul className="movie-list">
-            {data.map((item) => (
-                <MovieListItem
-                    key={item.id}
-                    name={item.name}
-                    viewers={item.viewers}
-                    favourite={item.favourite}
-                    like={item.like}
-					id={item.id}
-                />
-            ))}
+
+            {data.map((item) => (<MovieListItem key={item.id} {...item}/>))}
+
         </ul>
     );
 };
 
 export default MovieList;
-
-// 34. useContext hook & Reducers. 09:30 chi minutda qoldi
