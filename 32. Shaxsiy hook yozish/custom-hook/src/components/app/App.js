@@ -4,7 +4,7 @@
 //     const [firstname, setFirstname] = useState("");
 //     const [lastname, setLastname] = useState("");
 
-//     // console.log(firstname);//yani useState birinchi parametri undefind bo'ladi bu holatda firstname yozilgani uchun endi undefined emas firstname bu holatda setStaeti bilan o'zgarishi kerak bo'lgan o'zgaruvchi setfurstname esa shu firstnameni o'zgartiradigan funskya ""bu esafirstnameni qiymati
+//     // console.log(firstname);//yani useState birinchi parametri undefind bo'ladi bu holatda firstname yozilgani uchun endi undefined emas firstname bu holatda setState bilan o'zgarishi kerak bo'lgan o'zgaruvchi setfirstname esa shu firstnameni o'zgartiradigan funskya ""bu esa firstnameni qiymati
 //     // console.log(lastname);
 
 //     const validateInput = (text) => {
@@ -13,11 +13,11 @@
 //         }else{
 //           return false
 //         }
-//     };//yani agar textda raqam bo'lsa yani regex bilan raqam  true bo'lsa trueni qaytar yokida false bu holatda search()metod yani textni ichidan raqam izlaydi va raqam bor bo'lsa trueni qaytaradi aks holda false qaytaradi shunda true qaytarganda yani textni ichida raqam bor bo'lsa validateInputni parametrida chaqirilgan funksiyaga ega inputni texti danger stylega o'zgaradi va bu holatni ushlab olish uchun jsxga inputda set funksiyalar inputni onchage hodisasi sodir bo'lganda eventini ovoldi setfunksiyalar shu eventdagi holatga qarab valulardagi o'z ona o'zgaruvchilariga yani firstname lastnamelarga tasir qiladi
+//     };////REGULAR EXPRESION//yani agar textda raqam bo'lsa yani regex bilan raqam  true bo'lsa trueni qaytar yokida false bu holatda search()metod yani textni ichidan raqam izlaydi va raqam bor bo'lsa trueni qaytaradi aks holda false qaytaradi shunda true qaytarganda yani textni ichida raqam bor bo'lsa validateInputni parametrida chaqirilgan funksiyaga ega inputni texti danger stylega o'zgaradi va bu holatni ushlab olish uchun jsxga inputda set funksiyalar inputni onchage hodisasi sodir bo'lganda eventini ovoldi setfunksiyalar shu eventdagi holatga qarab valulardagi o'z ona o'zgaruvchilariga yani firstname lastnamelarga tasir qiladi
 
 //     const validateColorFirstname = validateInput(firstname) ? "text-danger" : null//agar validateInput true bo'lsa yani validateinputni parametrida chaqirilgan firstname true bo'lsa yani inputda raqam bo'sa text-danger classini ishlat bo'lmasa hech narsa qilma yani null va bu style classlarga aloqador funksiya bo'lgani uchun becet ichida classnamega yozildi yani shunda agar classnameda validateColorFirstname funksiyasi chaqirilsa validateInput funksiyasidagi holatga qarab inputda o'zgarish bo'ladi jsxga value qilib setstateni firstnamensi berilishi
 
-//     const validateColorLastname = validateInput(firstname) ? "text-danger" : null//tepadagi bilan bir hil comment
+//     const validateColorLastname = validateInput(firstname) ? "text-danger" : null//tepadagi  bilan bir hil comment
 
 //     return (
 //         <div className="w-50 mx-auto mb-5">
@@ -62,7 +62,7 @@ const User = () => {
     const lastname = useInputValidation("");
     const thirt = useInputValidation("");
     const four = useInputValidation("");
-    ////yani bu holatda bitta hook to'rtta inputga ishladi yani usestatelar ko'paymadi va bunaqa shaxsiy hooklar alohoida papkada alohida har fileda turgani yahshi appga aralashmasdan!!!
+    ////yani bu holatda bitta hook to'rtta inputga ishladi yani usestatelar ko'paymadi va bunaqa shaxsiy hooklar alohida papkada alohida  fileda turgani yahshi appga aralashmasdan!!!
 
     return (
         <div className="w-50 mx-auto mb-5">

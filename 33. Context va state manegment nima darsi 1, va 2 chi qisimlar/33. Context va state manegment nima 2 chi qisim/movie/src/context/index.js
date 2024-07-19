@@ -5,20 +5,20 @@ const initialValue = {
     data: [],
     term: "",
     filter: "all",
-};
+};//yani bu initialValue contextni boshlang'ich qiymati yani sayt ishlaganda doim bu o'zgaruvchi boshlang'ich qiymatli holatda bo'ladi
 
-export const Context = createContext(); //createContext bu reactdan export qilibnishi kerak bo'lgan Contexni yaratib beradigan metod yani bu yaratilgan Contexga butun loyiha o'rab olinadi Contextda Provider objecti bor shu Provider Context bilan birga loyihani o'rab oladi yani shunda Context.Provider ichiga butun loyihani chidren sifatida qo'yish mumkun
+export const Context = createContext(); //createContext bu reactdan export qilinishi kerak bo'lgan Contexni yaratib beradigan metod yani bu yaratilgan Contexga butun loyiha o'rab oladigan Contextda Provider objecti bor shu Provider Context bilan birga loyihani o'rab oladi yani shunda Context.Provider ichiga butun loyihani chidren sifatida qo'yish mumkun
 
 const reducer = (state = initialValue, action) => {
-    const { type, payLoad } = action;
-    ////reducer bu oddiy funksiya ikkita parametr qabul qiladi birinchisi state yani state initialValue yani boshlang'ich qiymatga teng yani initialValue o'zgaruvchidagi data term va filter ikkinchi action yani action esa object action objecti ikkita parametr qabul qiladi birinchisi type yani funksiyani nomi yani shu type objecti bilan funksiyalar topiladi ikkinchisi esa payload yani shu topilgan funskiyalarni parametrini qabul qilib oladi//reduser funksiya birinchi parametr qabul qiladi!!!ikkinchisiga oction yani object
+    const { type, payLoad } = action;////action bu object action objecti ikkita parametr qabul qiladi
+    ////reducer bu oddiy funksiya ikkita parametr qabul qiladi yani bu reducer o'zgaruvchi useReduser hookiga aloqador useReducer hooki ikkita PARAMETR QABUL QILGANI UCHUN VA BU REDUCER O'ZGARUVCHI USErEDUCER HOOKIGA IMPORT QILINISHI SABABLI BU REDUCER O'ZGARUVCHIGA IKKITA PARAMETR BERILDI yani useReducer birinchisi state yani state initialValue yani boshlang'ich qiymatga teng yani initialValue o'zgaruvchidagi data term va filter. ikkinchi parametr esa action yani action bu object action objecti ikkita parametr qabul qiladi birinchisi type yani funksiyani nomi yani shu type objecti bilan funksiyalar TYPI YANI NOMIGA QARAB topiladi ikkinchisi esa payload yani shu topilgan funskiyalarni parametrini qabul qilib oladi
     switch (type) {
        
         case "GET_DATA":
             return { ...state, data: payLoad };
             // 
         case "ON_DELETE": 
-        //agar type yani qaysi type shu filedagi type yani reducer funksiyada chaqirilgan type yani setstateni type qaysi type OnDlete typi yani funksiyasi yani typda funksiyani nomi ondelete bo'lsa ondelete funksiyasidagi manabu shartni bajar>>>>>const deleteArr = state.data.filter((c) => c.id !== yani bu holatda deleteArr nom;i o'zgaruvchi yaratilib ichiga appdagi ondelete funksiyasini vazifalari chaqirildi va state.dataligini sababi shu filedagui statedan datani olepti payload esa appdagi shu ondelete funksiyasini idsi yani parametrini oladi endi bu deletearrni yuqoridagi dataga qo'yish kerak sababi data hozir bo'sh va bu data nima vazifa bajarishi kerakligini dataga aytib qo'yish kerak>>>> return { ...state, data: deleteArr };yani spread operatori bilan statelar nusxalab olinishi kerak va data deletearrga o'zgartirib qo'yildi
+        //agar type yani qaysi type shu filedagi type yani reducer funksiyada chaqirilgan type yani setstateni type qaysi type On_Dlete typi yani funksiyasi yani typda funksiyani nomi ondelete bo'lsa ondelete funksiyasidagi manabu shartni bajar>>>>>const deleteArr = state.data.filter((c) => c.id !== yani bu holatda deleteArr nomli o'zgaruvchi yaratilib ichiga appdagi ondelete funksiyasini vazifalari chaqirildi va state.dataligini sababi shu filedagui statedan datani olepti payload esa appdagi shu ondelete funksiyasini idsi yani parametrini oladi endi bu deletearrni yuqoridagi dataga qo'yish kerak sababi data hozir bo'sh va bu data nima vazifa bajarishi kerakligini dataga aytib qo'yish kerak>>>> return { ...state, data: deleteArr };yani spread operatori bilan statelar nusxalab olinishi kerak va data deletearrga o'zgartirib qo'yildi
             const deleteArr = state.data.filter((c) => c.id !== payLoad);
             return { ...state, data: deleteArr };
 
