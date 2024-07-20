@@ -1,16 +1,17 @@
-import { Stack, Button, Container } from "@mui/material";
+import { Routes, Route } from "react-router-dom";
+import { Box } from "@mui/material";
+import { Main, Channel } from "../";
 
 const App = () => {
     return (
-        <Container>
-    
-            <Stack spacing={2} direction="row">
-             
-                <Button variant="text">Text</Button>
-                <Button variant="contained">Contained</Button>
-                <Button variant="outlined">Outlined</Button>
-            </Stack>
-        </Container>
+        <Box>
+            {/* box bu material uidan chaqirilgan divga o'hshagan narsa yani ona div lekin bu boxda material ui bilan ishlash uchun kerak bo'ladigan atributelari bor */}
+            <Routes>
+                {/* ROUTESDA doim route componentlar bo'ladi route path atributini qabul qiladi shu sabab ROUTESNI ICHIDA ROUTE BO'LISHI KERAK  */}
+                <Route path="/" element={<Main />} />
+                <Route path="/channel" element={<Channel />} />
+            </Routes>
+        </Box>
     );
 };
 
