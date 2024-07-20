@@ -1,0 +1,1 @@
+export {default as App } from "./app/app"//yani bu src papkani ichidagi asosiy index,jsga expoert qilingan appni distruptatsa qilib jo'natilgan shunda react taniydigan asosiy  asosiy index.js file tartibsizlanib ketmasdan componentlar shu joyga yoziladi va indexg.jsga export qilinadi
