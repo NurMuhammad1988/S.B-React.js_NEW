@@ -8,8 +8,7 @@ import { ApiService } from "../../service/api.service";
 const Main = () => {
     const [selectedCategory, setSelectedCategory] = useState("New");
     // default holatda Newda turipti yani Category componentda map qilingan category massivini birinchi namesi New string default holatda turipti
-
-    // 30 : 19 chi minutda qoldi
+    const [videos, setvideos] = useState([]);
 
     const selectedCategoryHandler = (catecory) => setSelectedCategory(catecory);
 
@@ -19,10 +18,26 @@ const Main = () => {
     // .evn va api.service.js filedagi server yani api kalitlar hafsizligini tekshirib ko'rish uchun yozildi
 
     useEffect(() => {
-        // bu fetching functsiya api service fileni ichida yozilgan url qabul qiladigan axios bilan ishleydigan ApiService asyng funksiyani ichki funksiyasi//.then promise!!! 
-        ApiService.fetching("search").then(data => console.log(data))
+        // variant-1
+        const getData = async () => {
+            // bu holatda asyng await funksiyasi bilan get so'rov qilingani pastda esa promise bilan get data qilinganiham bor//bu fetching functsiya api service fileni ichida yozilgan url qabul qiladigan axios bilan ishleydigan ApiService asyng funksiyani ichki funksiyasi
+            try {
+                const data = await ApiService.fetching("search");
+                setvideos(data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
 
+        getData();
     }, []);
+
+
+    // useEffect(() => {
+    // variant-2
+    //     // bu fetching functsiya api service fileni ichida yozilgan url qabul qiladigan axios bilan ishleydigan ApiService asyng funksiyani ichki funksiyasi//.then promise!!!
+    //     ApiService.fetching("search").then((data) => setvideos(data));
+    // }, []);
 
     return (
         <Stack>
@@ -36,7 +51,8 @@ const Main = () => {
                         {selectedCategory}
                         <span style={{ color: colors.secondary }}> videos</span>
                     </Typography>
-                    <Videos />
+                    <Videos videos={videos} />
+                    {/* videos componentga  usestateni videos o'zgaruvchisiga ApiService o'zgaruvchida useeffect bilan chaqirilgan datadagi yani apidagi videolarni jo'natildi   */}
                 </Container>
             </Box>
         </Stack>

@@ -1,6 +1,6 @@
 
 
-const Videos = () => {
+const Videos = ({videos}) => {
   return (
     <div>Videos</div>
   )
