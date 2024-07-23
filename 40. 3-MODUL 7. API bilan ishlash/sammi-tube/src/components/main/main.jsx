@@ -24,6 +24,7 @@ const Main = () => {
             try {
                 const data = await ApiService.fetching("search");
                 setvideos(data);
+                // YANI useEffect yani user saytga kirganda useEffect sabab endi getData ishlaydi getdatada esa data o'zgaruvchi bor data o'zgaruvchi async ishlaydi yani kutib turadi nimani kutib turadiapiservicedan keladigan fetching funksiyani ishlashini kutib turadi va setstatedan keletgan setvideos bo'sh massivli objectga datani yani datalarni get qiladigan data o'zgaruvchini solib qo'yadi yani serverdan  datalarni get qiladigan funksiya bu getdata. useeffectni ichida yozilishini sababi saytga user kirganda yoki kerakli categoriyni bosganda ishleydi boshqa payti jim turadi//////try, catchni esa js darslaridan bir qarab qo'y try catch serverdan so'rov jaroyinida hatoliklar bo'lsa shuni categoriyga ajratib logda aytib turadigan function hissoblanadi 
             } catch (error) {
                 console.log(error);
             }
