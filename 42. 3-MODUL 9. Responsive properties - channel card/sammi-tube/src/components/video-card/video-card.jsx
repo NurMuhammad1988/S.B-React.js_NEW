@@ -11,21 +11,28 @@ import { colors } from "../../constants/colors";
 import moment from "moment"; //npm i moment qilin dasturga chaqiriladigan kutubhona vazifasi???
 import { CheckCircle } from "@mui/icons-material";
 
-
-
-//videos.jsxdan video-cardga props orqali jo'natilgan video bu videoda serverdan chaqirilib map qilingan videoId nomli papkadagi itemlar bor
 const VideoCard = ({ video }) => {
     console.log(video);
     return (
-        <Card sx={{ width: "320px", boxShadow: "none", borderRadius: 0 }}>
+        <Card
+            //breakpoints o'lchamlar lekin ishlamadi
+            sx={{
+                width: { xs: "100%", sm: "360px", md: "320px" },
+                // yani xsda yani 0dan 600pxgacha hardni o'lchami 100% v smda yani 600pxdan yuqorida 900pxgacha har bir cardni o'lchami 360px va mdda 900pxdan yuqorida 1200pxgacha 320px
+                boxShadow: "none",
+                borderRadius: 0,
+            }}
+        >
             <CardMedia
                 image={video?.snippet?.thumbnails?.high?.url}
                 alt={video.snippet?.title}
-                sx={{ width: "360px", height: "180px" }}
+                sx={{ width: { xs: "100%", sm: "360px" }, height: "180px" }}
             />
-            {/* ?>>bor ysni so'roq belgisi bo'lsa yahshi ishlasin agar yo'q bo'lsa hato chiqarmasin yani muhummas */}
 
             <CardContent
+                //breakpoints ranglar>> //sx={{ background:{xs:"black", sm:"red", md:"yellow", lg:"aqua", xl:"brown"}}
+                // material uida response qilish (breakpoints) yani xs 0pxdan hissobleydi qancha pixelgacha ekanligini aytish kerak sm esa 600pxldan boshlanadi shunda background 0px dan 600pxgacha qora 600pxdan yuqorisi agar buyruq md, lg, xl qilib berilmasa har qanday size uchun qizil lekin bundan smdan keyingi sizlargaham alohida buyruq berib har qanday sizeda har qanday sharoitda turishini taminlash mumkun
+                //////yani aynan bu holatda xsda:bo'lsa 0pxdan 600pxgacha black va smda:bo'lsa 600pxdan  900pxgacha red va mdda:bo'lsa 900pxdan 1200pxgacha yellow va lgda:bo'lsa 1200pxdan 1536pxgacha aqua va xl:da bo'lsa 1536pxdan yuqorisida qanday o'lchamli monitor bo'lishidan qattiy nazar brown
                 sx={{
                     background: colors.primary,
                     height: "200px",
@@ -35,13 +42,10 @@ const VideoCard = ({ video }) => {
                 <>
                     <Typography my={"5px"} sx={{ opacity: ".4" }}>
                         {moment(video?.snippet?.publishedAt).fromNow()}
-                        {/* moment bu npm i moment  qilib chaqirilgan kutubhona buni vazifasi???>>>Sanalarni tahlil qilish, tekshirish, manipulyatsiya qilish va formatlash uchun JavaScript sanalar kutubxonasi.Moment.js eski loyiha bo'lib, hozir texnik xizmat ko'rsatish rejimida. Aksariyat hollarda siz boshqa kutubxonani tanlashingiz kerak. fromNowham momentni funksiyasi??? */}
                     </Typography>
 
                     <Typography variant="subtitle1" fontWeight={"bold"}>
-                        {/* variant="subtitle1" material uini Typography componentini subtitle1 nomli classi desaham bo'ladi paddingli class  */}
                         {video?.snippet?.title.slice(0, 70)}
-                        {/* slice metodi bilan datadan keletgan elementlarniu titelidagi so'zlar 50tadan ko'p bo'meydigan qilib qo'yildi */}
                     </Typography>
 
                     <Typography variant="subtitle2" sx={{ opacity: ".6" }}>
