@@ -26,7 +26,7 @@ const Main = () => {
         };
 
         getData();
-    }, [selectedCategory]); //yani bu useeffectni qaram funksiyasi yani endi selectedCategory qachonki o'zgarsagini bu useeffect ishga tushib ichidagi getdata funksiyasini ishga tushuradi selectedCategoryda esa usestate sabab default holati serverdan keletgan malumotni new papkasi va endi selectedCategory har o'zgarganda useeffect ishga tushib har hil categoriyli videolar apidan kelepti masalan kive gaming education va hakozo lekin categoryni qanday ajratepti??????>>> `search?part=snippet&q=${selectedCategory}` yani &q yani queriy buyruq sabab yani datani ichidagi  ${selectedCategory}da endi  setSelectedCategory bor setSelectedCategoryda esa apidan keletgan malumotlar bor va u malumotlar categoriyga ajratilgan qayerda ajratilgan apidan keletgan objectda bu category yo'q lekin constantsni ichidagi index jsda bu categoriylar apida get qilinganda nomlari iconlari category nomli o'zgaruvchida chaqirilgan buni hammasi ApiService sabab yani ApiService funksiya ishlaganda selectedCategory get so'rov jo'natadi ichida esa selectedCategoryHandler sabab category bor bu selectedCategoryHandlerni ichidagi category setSelectedCategoryga parametr qilib berilgan va bu setSelectedCategoryni o'zgaruvchisi yani setSelectedCategory o'zgartirradigan o'zgaruvchisi selectedCategory endi selectedCategoryniham parametrida category bor bu selectedCategory serverga so'rov bilan borganda parametridagi categoryni rapidapi taniydi va kerakli categoriylarni beradi
+    }, [selectedCategory]); 
 
     return (
         <Stack>

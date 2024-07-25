@@ -36,9 +36,7 @@ const SearchBar = () => {
                 // value use statedan kelEtgan boshlang'ich qiymati bo'sh object agar inputda onchage hodisasi sodir bo'lsa setvalue funksiya ishga tushib inputni qiymatlarini olib beradi va bu qiymatlar valuda saqlanadi va bu inputni ona divi paperga submit hodisasi bo'lganda changeHandler funksiyasi ishlab inputdagi qiymatni olib beradi va agar valu o'zgaruvchi true bo'lsa yani bo'sh bo'lmasa yani submit bo'lsa navigate funksiyasi bilan submitdagi malumotni string qiliob search componentga jo'nat deyildi endi inputda valu qiymati bor agar valuega user qiymat bersa navigation sabab osha qiymatni izlash uchun search componentga yo'naltiriladi
             />
 
-            {/* <IconButton type="submit">
-                <i className="fa-solid fa-magnifying-glass"></i>
-            </IconButton> */}
+           
 
             <SearchIcon />
         </Paper>

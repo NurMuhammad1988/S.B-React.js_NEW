@@ -11,7 +11,10 @@ body {
 }
 /* //////////////////////////////////////////////////////////////////////////////////////////// */
 
-
+a{
+  text-decoration: none;
+  color: black;
+}
 /* category componentdagi agar scroll style ishlatilsa bu stylelarham ishlatilishi kerak */
 /* ::-webkit-scrollbar{
   width: 0;
