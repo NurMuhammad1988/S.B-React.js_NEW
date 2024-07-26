@@ -25,7 +25,7 @@ const Search = () => {
         getData();
     }, [id]); //yani qachonki useparams useeffectni parametridagi id o'zgarsa useeffect ishga tushadi
     // console.log(videos);
-    ////BU HOLATDA useeffect bilan get data funksiyasi bilan apiservise funksiyasi chaqirilib fetching qilinib setviseos bo'sh massiviga datadanitemslar chaqirilgan va useparams hooki bilan videolarni idlari olinib span ichida search component ishlaganda berib qo'yilgan
+    ////BU HOLATDA useeffect bilan get data funksiyasi bilan apiservise funksiyasi chaqirilib fetching qilinib setviseos bo'sh massiviga datadan itemslar chaqirilgan va useparams hooki bilan videolarni idlari olinib span ichida search component ishlaganda berib qo'yilgan
     return (
         <Box p={2} sx={{ height: "90vh" }}>
             <Container maxWidth={"90%"}>

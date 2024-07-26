@@ -30,7 +30,7 @@ const VideoCard = ({ video }) => {
                     alt={video.snippet?.title}
                     sx={{ width: { xs: "100%", sm: "360px" }, height: "180px" }}
                 />
-                {/* yani endi video ustiga bosilganda Link savab videoni idisi bor pagega o'tib ketadi sababi>>>/video/ yani bu /video/ app,jsxda videoni idlariga ulangan va videodetails filega jo'natilgan yani videoga bosilganda videodetailsga o'tib ketadi buni link bajaradi
+                {/* yani endi video ustiga bosilganda Link sabab videoni idisi bor pagega o'tib ketadi sababi>>>/video/ yani bu /video/ app,jsxda videoni idlariga ulangan va videodetails filega jo'natilgan yani videoga bosilganda videodetailsga o'tib ketadi buni link bajaradi
             
             /////bu holatda  propsdan kelgan video yani apidan keletgan object va Linkga aytildiki linkga click bo'lganda videoni ichidagi videoni idsini ichidagi videoidiga obor videoIdni esa videdetailga havolasi bor app.jsda    */}
             </Link>

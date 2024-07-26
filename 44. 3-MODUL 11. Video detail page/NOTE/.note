@@ -1,0 +1,8 @@
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Bu 44chi dars ochilganda endi [>>yarn start<<] qilib ochilishi kerak endi npmdan emas endi yarndan foydalanepmiz
+
+//// rapid apidan so'rovlar tugadi endi 3-modulni sammitube loyihasini prtfoli uchun boshqa kompdan boshqa gmaildan rapid apiga ulanib rapid apidan yangi key olib ishlatish kerak shunda portfolio uchun yareydigan loyiha bo'ladi bo'lmasa yo'q//Loyihada kod hatolari yo'q bor bo'lsaham o'zim qilgan bo'laman loyihani to'g'irlab yangi key olib portfolioga qo'yish shart
+
+//loyihada rapid apiniyangi gmaildan olingan keyini ishlatish uchun server kodlarni nomini o'zgartirgandim lekin ishlamadi agar loyihani qayta ochganingda get so'rovdan boshqa hato bo'lsa to'g'irla va buni portfolio va netlifyga alohida file qilib qo'y
+
+
+// react playerda muammo bor control tegi ishlamayapti loyihani porfolioga tayyorlaganda buniham ishlarib qo'yish kerak
