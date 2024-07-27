@@ -11,14 +11,13 @@ import {
     Visibility,
 } from "@mui/icons-material";
 import renderHTML from "react-render-html"; //serverdan keletgan malumot json string formatda bo'lsa raectga render qilib react tushunadigan tilga o'girib beradi
+
 import { Loader, Videos } from "../";
 
 const VideoDetail = () => {
     const [videoDetail, setVideoDetail] = useState(null);
     const [relatedVideo, setRelatedVideo] = useState([]);
-
     const { id } = useParams();
-
     useEffect(() => {
         const getData = async () => {
             try {
@@ -40,8 +39,9 @@ const VideoDetail = () => {
         };
         getData();
     }, [id]);
-
     if (!videoDetail?.snippet) return <Loader />; //AGAR VIDEODATILNI SNIPPETLARI KELMAY TURSA LOADERNI ISHLAT YANI VIDEODATAIL FALSE BO'LSA LOADERNI QAYTAR
+
+    console.log(videoDetail);//serverdan videodetaillarni keletganini ko'rish uchun yozildi detaillar keldi lekin html rendring bo'lmadi hato chiqarrepti????????????????????????????????????????????????????????????????
 
     return (
         <Box minHeight={"90vh"} mb={10}>
@@ -99,7 +99,7 @@ const VideoDetail = () => {
                             <Visibility />
                             {parseInt(
                                 videoDetail.statistics.viewCount
-                            ).toLocaleString()}{" "}
+                            ).toLocaleString()}
                             views
                         </Stack>
 
@@ -112,7 +112,7 @@ const VideoDetail = () => {
                             <FavoriteOutlined />
                             {parseInt(
                                 videoDetail.statistics.likeCount
-                            ).toLocaleString()}{" "}
+                            ).toLocaleString()}
                             likes
                         </Stack>
 
@@ -125,7 +125,7 @@ const VideoDetail = () => {
                             <MarkChatRead />
                             {parseInt(
                                 videoDetail.statistics.commentCount
-                            ).toLocaleString()}{" "}
+                            ).toLocaleString()}
                             comment
                         </Stack>
                     </Stack>

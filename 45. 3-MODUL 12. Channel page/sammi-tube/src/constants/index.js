@@ -32,3 +32,4 @@ export const category = [
     { name: "Beauty", icon: <FaceRetouchingNatural /> },
     { name: "Music", icon: <MusicNote /> },
 ];
+

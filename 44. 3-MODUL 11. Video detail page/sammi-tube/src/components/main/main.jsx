@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Box, Container, Stack, Typography } from "@mui/material";
 import { colors } from "../../constants/colors";
 import { Category, Videos } from "../";
-import {  ApiService } from "../../service/api.service";
+import { ApiService } from "../../service/api.service";
 // ApiService bu constructor
 
 const Main = () => {

@@ -1,7 +1,10 @@
 import { CheckCircle } from "@mui/icons-material";
 import { Box, CardContent, CardMedia, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const ChannelCard = ({ video }) => {
+
+    // console.log("VideoId",video);//videoid apida bor yo'qligini tekshirish uchun yozildi
     return (
         <Box
             sx={{
@@ -15,45 +18,51 @@ const ChannelCard = ({ video }) => {
                 margin: "auto",
             }}
         >
-            <CardContent
-                sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    textAlign: "center",
-                }}
-            >
-                <CardMedia
-                    image={video?.snippet?.thumbnails?.default?.url}
-                    alt={video?.snippet?.title}
+            <Link to={`/channel/${video?.snippet?.channelId}`}>
+                <CardContent
                     sx={{
-                        borderRadius: "500%",
-                        height: "180px",
-                        width: "180px",
-                        mb: 2,
-                        border: "1px solid #e3e3e3",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        textAlign: "center",
                     }}
-               
-                />
-
-                <Typography variant="h6">
-                    {video?.snippet?.title}
-                
-
-                    <CheckCircle
-                        sx={{ fontSize: "14px", color: "gray", ml: "5px" }}
+                >
+                    <CardMedia
+                        image={video?.snippet?.thumbnails?.default?.url}
+                        alt={video?.snippet?.title}
+                        sx={{
+                            borderRadius: "500%",
+                            height: "180px",
+                            width: "180px",
+                            mb: 2,
+                            border: "1px solid #e3e3e3",
+                        }}
                     />
-            
-                </Typography>
 
-                {video?.statistics?.subscriberCount && (
+                    <Typography variant="h6">
+                        {video?.snippet?.title}
 
-                    <Typography sx={{fontSize: "15px", fontWeight: "500", color: "gray"}}>
-                      {parseInt(video?.statistics?.subscriberCount).toLocaleString("en-US")} {" "} Subscribers
+                        <CheckCircle
+                            sx={{ fontSize: "14px", color: "gray", ml: "5px" }}
+                        />
                     </Typography>
 
-                )}
-            </CardContent>
+                    {video?.statistics?.subscriberCount && (
+                        <Typography
+                            sx={{
+                                fontSize: "15px",
+                                fontWeight: "500",
+                                color: "gray",
+                            }}
+                        >
+                            {parseInt(
+                                video?.statistics?.subscriberCount
+                            ).toLocaleString("en-US")}{" "}
+                            Subscribers
+                        </Typography>
+                    )}
+                </CardContent>
+            </Link>
         </Box>
     );
 };

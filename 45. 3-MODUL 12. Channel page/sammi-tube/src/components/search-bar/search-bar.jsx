@@ -1,4 +1,4 @@
-import { Paper, IconButton } from "@mui/material";
+import { Paper, } from "@mui/material";
 import { colors } from "../../constants/colors";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; //usenavigate hooki react router domni hooki vazifasi yani user bu search-bar comonentidan foydalanib nimadur harakat qilganda bu search-bar componentidan boshqa comonentga yo'naltiradi yani bu holatda search componentga
