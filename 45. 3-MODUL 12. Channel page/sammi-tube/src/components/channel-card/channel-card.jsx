@@ -2,8 +2,7 @@ import { CheckCircle } from "@mui/icons-material";
 import { Box, CardContent, CardMedia, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const ChannelCard = ({ video }) => {
-
+const ChannelCard = ({ video, marginTop }) => {
     // console.log("VideoId",video);//videoid apida bor yo'qligini tekshirish uchun yozildi
     return (
         <Box
@@ -16,9 +15,16 @@ const ChannelCard = ({ video }) => {
                 width: { xs: "356px", md: "320px" },
                 height: "326px",
                 margin: "auto",
+                marginTop: marginTop,
+                // chnannel.jsxda channelcardga channelDetail props qilib berilgan shu propsda aynan channel dumaloq rasim uchun styleham propsiq qilib berildi
             }}
         >
-            <Link to={`/channel/${video?.snippet?.channelId}`}>
+            <Link
+                to={`/channel/${
+                    video?.id.channelId ? video?.id.channelId : video?.id
+                }`}
+            >
+                {/* agar channelid bor bo'lsa channelidini ko'rsat yo'q bo'lsa videoidini o'zini ko'rsat */}
                 <CardContent
                     sx={{
                         display: "flex",
@@ -28,10 +34,11 @@ const ChannelCard = ({ video }) => {
                     }}
                 >
                     <CardMedia
-                        image={video?.snippet?.thumbnails?.default?.url}
+                        image={video?.snippet?.thumbnails?.high?.url}
+                        // high shu urldagi rasimni sifati
                         alt={video?.snippet?.title}
                         sx={{
-                            borderRadius: "500%",
+                            borderRadius: "50%",
                             height: "180px",
                             width: "180px",
                             mb: 2,
