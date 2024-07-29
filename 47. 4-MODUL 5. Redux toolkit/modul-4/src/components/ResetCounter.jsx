@@ -1,6 +1,13 @@
-const ResetCounter = ({resetHandler}) => {
+import { useDispatch } from "react-redux";
+import { resetCounterSlice } from "../reducers/countSlice";
+
+
+const ResetCounter = () => {
+
+    const dispatch = useDispatch()
+
     return (
-        <button onClick={resetHandler} className="btn btn-danger">
+        <button className="btn btn-danger" onClick={() => dispatch(resetCounterSlice())}>
             Reset
         </button>
     );
