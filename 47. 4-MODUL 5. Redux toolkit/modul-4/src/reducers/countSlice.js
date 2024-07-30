@@ -55,4 +55,3 @@ export const { plusCounterSlice, minusCounterSlice, resetCounterSlice } =
     countSlice.actions;
 
 export default countSlice.reducer;
-//Assalomu aleykum hammaga redux bo'yicha bitta savol bor edi darsda countSlice fileda reducer funksiya yozilgan va store/indexda redux config fileda chaqirilgan lekin countReducer nomi bilan chaqirilgan tushunmagan joyim bu countReducer reducerni default chaqirilishimi aytmoqchimanki bu countReducer  countSlice fileda yo'q
