@@ -16,26 +16,30 @@ const Register = () => {
                         src={logo}
                         alt="logo"
                         width="72"
-                        height="60"/>
-                        
+                        height="60"
+                    />
                     <h1 className="h3 mb-3 fw-normal">Please register</h1>
-                    
-                    <Input label={"Username"} state={name} setState={setName} />
 
                     <Input
-                        label={"Email address"}
+                        label={"Username"} //label
+                        state={name} //value
+                        setState={setName} //onChange e. target
+                        // type default "text"
+                    />
+
+                    <Input
+                        label={"Email address"} //label
                         type={"email"}
-                        state={email}
-                        setState={setEmail}/>
+                        state={email} //value
+                        setState={setEmail} //onChange e. target
+                    />
 
                     <Input
-                        label={"Password"}
+                        label={"Password"} //label
                         type={"password"}
-                        state={password}
-                        setState={setPassword}/>
-
-
-
+                        state={password}//value
+                        setState={setPassword} //onChange e. target
+                    />
 
                     <button
                         className="w-100 btn btn-primary mt-2"
@@ -43,7 +47,6 @@ const Register = () => {
                     >
                         Register
                     </button>
-
                 </form>
             </main>
         </div>

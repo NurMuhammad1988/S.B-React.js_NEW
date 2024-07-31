@@ -75,7 +75,7 @@ const User = () => {
                         className={`form-control ${firstname.valiDateColor}`}
                         placeholder="Firstname"
                         value={firstname.value}
-                        // bu holatda value shu inputni eventi shu valuega setValue sabab eventlar tushadi va firsname objectidagi bo'sh stringga tushadi
+                        // bu holatda value shu inputni eventi shu valuega setValue sabab eventlar tushadi va firstname objectidagi bo'sh stringga tushadi
                         onChange={firstname.onChange}
                         //firstame bo'sh objectida change bo'lganda yani inputda qandaydur hodisa sodir bo'lganda onchange funksiyasi ishlasin
                     />
