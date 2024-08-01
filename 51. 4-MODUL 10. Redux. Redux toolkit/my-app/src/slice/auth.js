@@ -7,8 +7,8 @@ const initialState = {
 };//bu boshlang'ich qiymatlar createSlice funksyasi yaratgan authSlice funksiyasida namedan keyin chaqirilgan birinchi name yozlishini sababi bu nami huddi reduser funksiyasi nomiday gap chaqirib ishlatish uchun kerak
 
 export const authSlice = createSlice({
-    name: "auth",
-    initialState,
+    name: "auth",//nomi
+    initialState,//boshlang'ich qiymati
     reducers: {
         loginUserStart : state => {
             state.isLoading = true
@@ -18,5 +18,5 @@ export const authSlice = createSlice({
     }
 });
 
-export const {loginUserStart} =  authSlice.actions//yani objectni default qilib export qilish
+export const {loginUserStart} =  authSlice.actions//yani funksiyani objectqilib default export qilish
 export default authSlice.reducer

@@ -7,13 +7,15 @@ import { loginUserStart } from "../slice/auth";
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const dispatch = useDispatch();
-    const { isLoading } = useSelector((state) => state.auth);
+    const dispatch = useDispatch(); //holatni yangilash va yangi holatni qaytarish uchun yani bu holatda loginUserStartni holatini qaytaradi
+    const { isLoading } = useSelector((state) => state.auth); //componentni so'nggi holatini olib beradi stateni qabul qiladi va bu holatda state setPassword setPasword esa inputga berilgan shunda useSelector setpasswordni so'nggi holatini olib beradi
+
     // const auth =  useSelector(state => state.auth)
-    // console.log(auth);//selectorda nima keletganini ko'rish uchun
+    // console.log(auth);//selectordan nima keletganini ko'rish uchun
+
     const loginHandler = (e) => {
         e.preventDefault();
-        dispatch(loginUserStart());
+        dispatch(loginUserStart()); //shu loginUserStart ishlaganda loginHandler chaqirilgan buttondan boshqa joy yangilanmasin
     };
 
     return (
