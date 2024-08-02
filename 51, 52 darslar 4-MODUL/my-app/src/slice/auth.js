@@ -18,6 +18,8 @@ export const authSlice = createSlice({
         loginUserStart : state => {//bu state boshlang'ich qiymat yani stateni isloading qiymatini true qildik boshlang'ich qiymati esa false edi
             state.isLoading = true
         },//user start bo'lganda yoki secces bo'ladi yoki failure bo'ladi shulardan birini chiqarish uchun
+
+
         loginUserSucces  : state => {},
         loginUserFailure : state => {},
 
@@ -25,10 +27,15 @@ export const authSlice = createSlice({
         registerUserStart : state => {
             state.isLoading = true
         },//user start bo'lganda yoki secces bo'ladi yoki failure bo'ladi shulardan birini chiqarish uchun
+
+
         registerUserSucces  : state => {},
         registerUserFailure : state => {},
     }
 });
 
-export const {loginUserStart, registerUserStart} =  authSlice.actions//yani funksiyani objectqilib default export qilish
+export const {loginUserStart, registerUserStart} =  authSlice.actions//yani funksiylarni object qilib default export qilish
 export default authSlice.reducer
+
+//// 12. dars JWT token// yani json web token nima bu jwt saytlarda ro'yhatdan o'tish uchun kerak yani userni malumotlarini saqlab turish uchun kerak   
+//"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo0NzQyMX0sImlhdCI6MTcyMjU1ODIyNCwiZXhwIjoxNzI3NzQyMjI0fQ.rEBQtEc4IgtodfClJv4Yb647Nkl66A7a9Ap2XtGXt70"//birinchi nuqtagacha Header ikkinchi nuqtagcah foydalanuvchi haqida Payload ohirida esa jwtni kalit so'zlari bu jwt har bir user uchun unikal bo'ladi yani hammaniki har hil fronted uchun tokenlar bilan userni malumotlari get qilib olinadi postman ilovasida 12. dars JWT token darsida qilindi
