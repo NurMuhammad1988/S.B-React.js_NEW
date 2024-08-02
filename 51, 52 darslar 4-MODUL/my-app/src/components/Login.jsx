@@ -15,7 +15,7 @@ const Login = () => {
 
     const loginHandler = (e) => {
         e.preventDefault();
-        dispatch(loginUserStart()); //shu loginUserStart ishlaganda loginHandler chaqirilgan buttondan boshqa joy yangilanmasin
+        dispatch(loginUserStart()); //shu loginUserStart ishlaganda loginHandler chaqirilgan buttondan boshqa joy yangilanmasin//loginUserStart auth.jsda yozilgan redux funksiya shu sabab () chaqirilishi kerak
     };
 
     return (
@@ -47,7 +47,7 @@ const Login = () => {
 
                     <button
                         className="w-100 btn btn-primary mt-2"
-                        disabled={isLoading}
+                        disabled={isLoading}//buttonga onclick bo'lganda bu buttonni disabled qiladi yani o'chiradi qotiradi
                         onClick={loginHandler}
                         type="submit"
                     >

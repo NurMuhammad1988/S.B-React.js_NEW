@@ -1,11 +1,21 @@
 import { useState } from "react";
 import { logo } from "../constants";
 import { Input } from "../ui";
+import { useDispatch, useSelector } from "react-redux";
+import { registerUserStart } from "../slice/auth";
 
 const Register = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const dispatch = useDispatch(); //holatni yangilash va yangi holatni qaytarish uchun yani bu holatda loginUserStartni holatini qaytaradi
+    const { isLoading } = useSelector((state) => state.auth); //isloading authda bitt a bo'lhani uchun pastdagi loading buttonlar bir hil ishlepti masalan loginga bosilsa registor buttonham loading bo'lib qolepti
+
+
+    const loginHandler = (e) => {
+        e.preventDefault();
+        dispatch((registerUserStart())); //shu registerUserStart ishlaganda loginHandler chaqirilgan buttondan boshqa joy yangilanmasin//registerUserStart auth.jsda yozilgan redux funksiya shu sabab () chaqirilishi kerak
+    };
 
     return (
         <div className="text-center mt-5">
@@ -37,16 +47,20 @@ const Register = () => {
                     <Input
                         label={"Password"} //label
                         type={"password"}
-                        state={password}//value
+                        state={password} //value
                         setState={setPassword} //onChange e. target
                     />
 
                     <button
                         className="w-100 btn btn-primary mt-2"
+                        disabled={isLoading}//buttonga onclick bo'lganda bu buttonni disabled qiladi yani o'chiradi qotiradi
+                        onClick={loginHandler}
                         type="submit"
                     >
-                        Register
+                        {isLoading ? "Loading..." : "Register"}
+                        {/* agar isloading true bo'lsa yani user login qilgan bo'lsa Loading textini chiqar agar yokida isloading bo'sh bo'lsa yani hali user login qilmagan bo'lsa Register textini hciqar */}
                     </button>
+
                 </form>
             </main>
         </div>
