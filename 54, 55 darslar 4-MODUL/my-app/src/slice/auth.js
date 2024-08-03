@@ -13,22 +13,19 @@ export const authSlice = createSlice({
     name: "auth", //nomi
     initialState, //boshlang'ich qiymati
     reducers: {
-
-
-        signUserStart: state => {
-            state.isLoading = true;
-
+        // //LOGIN actions REGISTER actions
+        signUserStart: (state) => {
+            state.isLoading = true; //bu state boshlang'ich qiymat yani stateni isloading qiymatini true qildik boshlang'ich qiymati esa false edi//user start bo'lganda yoki secces bo'ladi yoki failure bo'ladi shulardan birini chiqarish uchun
         },
-        signUserSucces: state => {
+        signUserSucces: (state, action) => {
             state.loggedIn = true;
             state.isLoading = false;
+            state.user = action.payload
         },
-        signUserFailure: state => {
+        signUserFailure: (state, action) => {
             state.isLoading = false;
-            state.error = "errorrr";
+            state.error = action.payload;
         },
-
-
 
         // //LOGIN actions
         // loginUserStart: (state) => {
@@ -58,9 +55,8 @@ export const authSlice = createSlice({
     },
 });
 
-export const {
- signUserFailure, signUserStart,signUserSucces
-} = authSlice.actions; //yani funksiylarni object qilib default export qilish
+export const { signUserFailure, signUserStart, signUserSucces } =
+    authSlice.actions; //yani funksiylarni object qilib default export qilish
 export default authSlice.reducer;
 
 //// 12. dars JWT token// yani json web token nima bu jwt saytlarda ro'yhatdan o'tish uchun kerak yani userni malumotlarini saqlab turish uchun kerak

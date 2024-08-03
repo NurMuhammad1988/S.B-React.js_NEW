@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { signUserFailure, signUserStart, signUserSucces } from "../slice/auth";
 import AuthService from "../service/auth";
 
+saytdagi 10,11,13,14 darslarni qayta qayta qayta takrorla va commentlar!!!
+
 const Register = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -21,9 +23,10 @@ const Register = () => {
             const response = await AuthService.userRegister(user);
             console.log(response);
             console.log(user); //foydalanuvchi ro'yhatdan o'tganligini ko'rish uchun
-            dispatch(signUserSucces()); //register actions
+            dispatch(signUserSucces(response.user)); //register actions
         } catch (error) {
-            dispatch(signUserFailure()); //register actions
+            // console.log(error.response.data);
+            dispatch(signUserFailure(error.response.data.errors)); //register actions//error.response.data signUserFailureni parametriga borib tushadi
         }
     };
 
