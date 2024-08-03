@@ -2,7 +2,8 @@ import { useState } from "react";
 import { logo } from "../constants";
 import { Input } from "../ui";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUserStart } from "../slice/auth";
+import { signUserFailure, signUserStart, signUserSucces } from "../slice/auth";
+import AuthService from "../service/auth";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -13,9 +14,17 @@ const Login = () => {
     // const auth =  useSelector(state => state.auth)
     // console.log(auth);//selectordan nima keletganini ko'rish uchun
 
-    const loginHandler = (e) => {
+    const loginHandler = async (e) => {
         e.preventDefault();
-        dispatch(loginUserStart()); //shu loginUserStart ishlaganda loginHandler chaqirilgan buttondan boshqa joy yangilanmasin//loginUserStart auth.jsda yozilgan redux funksiya shu sabab () chaqirilishi kerak
+        dispatch(signUserStart()); //shu loginUserStart ishlaganda loginHandler chaqirilgan buttondan boshqa joy yangilanmasin//loginUserStart auth.jsda yozilgan redux funksiya shu sabab () chaqirilishi kerak
+        const user = { email, password };
+        try {
+            const response = await AuthService.userLogin(user); //userLogin bu metod
+            console.log(response);
+            dispatch(signUserSucces());
+        } catch (error) {
+            dispatch(signUserFailure());
+        }
     };
 
     return (
@@ -47,7 +56,7 @@ const Login = () => {
 
                     <button
                         className="w-100 btn btn-primary mt-2"
-                        disabled={isLoading}//buttonga onclick bo'lganda bu buttonni disabled qiladi yani o'chiradi qotiradi
+                        disabled={isLoading} //buttonga onclick bo'lganda bu buttonni disabled qiladi yani o'chiradi qotiradi
                         onClick={loginHandler}
                         type="submit"
                     >

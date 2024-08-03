@@ -14,33 +14,53 @@ export const authSlice = createSlice({
     initialState, //boshlang'ich qiymati
     reducers: {
 
-        //LOGIN actions
-        loginUserStart: (state) => {
-            //bu state boshlang'ich qiymat yani stateni isloading qiymatini true qildik boshlang'ich qiymati esa false edi
+
+        signUserStart: state => {
             state.isLoading = true;
-        }, //user start bo'lganda yoki secces bo'ladi yoki failure bo'ladi shulardan birini chiqarish uchun
 
-        loginUserSucces: (state) => {},
-        loginUserFailure: (state) => {},
-
-        //REGISTER actions
-        registerUserStart: (state) => {
-            state.isLoading = true;
-        }, //user start bo'lganda yoki secces bo'ladi yoki failure bo'ladi shulardan birini chiqarish uchun
-
-        registerUserSucces: (state) => {
+        },
+        signUserSucces: state => {
             state.loggedIn = true;
             state.isLoading = false;
         },
-
-        registerUserFailure: (state) => {
+        signUserFailure: state => {
             state.isLoading = false;
-            state.error = "error";
+            state.error = "errorrr";
         },
+
+
+
+        // //LOGIN actions
+        // loginUserStart: (state) => {
+        //     //bu state boshlang'ich qiymat yani stateni isloading qiymatini true qildik boshlang'ich qiymati esa false edi
+        //     state.isLoading = true;
+        // }, //user start bo'lganda yoki secces bo'ladi yoki failure bo'ladi shulardan birini chiqarish uchun
+        // loginUserSucces: (state) => {
+        //     state.loggedIn = true;
+        //     state.isLoading = false;
+        // },
+        // loginUserFailure: (state) => {
+        //     state.isLoading = false;
+        //     state.error = "errorrr";
+        // },
+        // //REGISTER actions
+        // registerUserStart: (state) => {
+        //     state.isLoading = true;
+        // }, //user start bo'lganda yoki secces bo'ladi yoki failure bo'ladi shulardan birini chiqarish uchun
+        // registerUserSucces: (state) => {
+        //     state.loggedIn = true;
+        //     state.isLoading = false;
+        // },
+        // registerUserFailure: (state) => {
+        //     state.isLoading = false;
+        //     state.error = "errorrr";
+        // },
     },
 });
 
-export const { loginUserStart, registerUserStart, registerUserSucces,registerUserFailure } = authSlice.actions; //yani funksiylarni object qilib default export qilish
+export const {
+ signUserFailure, signUserStart,signUserSucces
+} = authSlice.actions; //yani funksiylarni object qilib default export qilish
 export default authSlice.reducer;
 
 //// 12. dars JWT token// yani json web token nima bu jwt saytlarda ro'yhatdan o'tish uchun kerak yani userni malumotlarini saqlab turish uchun kerak

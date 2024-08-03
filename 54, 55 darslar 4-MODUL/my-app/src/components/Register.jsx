@@ -2,7 +2,7 @@ import { useState } from "react";
 import { logo } from "../constants";
 import { Input } from "../ui";
 import { useDispatch, useSelector } from "react-redux";
-import {registerUserFailure,registerUserStart,registerUserSucces,} from "../slice/auth";
+import { signUserFailure, signUserStart, signUserSucces } from "../slice/auth";
 import AuthService from "../service/auth";
 
 const Register = () => {
@@ -12,17 +12,18 @@ const Register = () => {
     const dispatch = useDispatch(); //holatni yangilash va yangi holatni qaytarish uchun yani bu holatda loginUserStartni holatini qaytaradi
     const { isLoading } = useSelector((state) => state.auth); //isloading authda bitt a bo'lhani uchun pastdagi loading buttonlar bir hil ishlepti masalan loginga bosilsa registor buttonham loading bo'lib qolepti
 
-    const loginHandler = async (e) => {
+    const registerHandler = async (e) => {
         e.preventDefault();
-        dispatch(registerUserStart()); //shu registerUserStart ishlaganda loginHandler chaqirilgan buttondan boshqa joy yangilanmasin//registerUserStart auth.jsda yozilgan redux funksiya shu sabab () chaqirilishi kerak
+        dispatch(signUserStart()); //shu registerUserStart ishlaganda loginHandler chaqirilgan buttondan boshqa joy yangilanmasin//registerUserStart auth.jsda yozilgan redux funksiya shu sabab () chaqirilishi kerak
         const user = { username: name, email, password };
+
         try {
             const response = await AuthService.userRegister(user);
             console.log(response);
             console.log(user); //foydalanuvchi ro'yhatdan o'tganligini ko'rish uchun
-            dispatch(registerUserSucces()); //register actions
+            dispatch(signUserSucces()); //register actions
         } catch (error) {
-            dispatch(registerUserFailure()); //register actions
+            dispatch(signUserFailure()); //register actions
         }
     };
 
@@ -63,7 +64,7 @@ const Register = () => {
                     <button
                         className="w-100 btn btn-primary mt-2"
                         disabled={isLoading} //buttonga onclick bo'lganda bu buttonni disabled qiladi yani o'chiradi qotiradi
-                        onClick={loginHandler}
+                        onClick={registerHandler}
                         type="submit"
                     >
                         {isLoading ? "Loading..." : "Register"}

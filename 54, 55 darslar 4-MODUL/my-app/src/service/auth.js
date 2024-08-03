@@ -4,17 +4,18 @@ import axios from "./api";
 const AuthService = {
     //constructor va ichida constructor functionlar
     async userRegister(user) {
-        const response = await axios.post("/users", { user }); //api.jsda ko'rsatilgan asosiy server urlini dami yani serverda turgan users papkasiga post so'rov jo'natish
-        return response //.data//datani yana yoqib qo'yish kerak
+        const response   = await axios.post("/users", { user }); //api.jsda ko'rsatilgan asosiy server urlini nomi yani serverda turgan users papkasiga post so'rov jo'natish
+        return response.data//return response o'zgaruvchini ishga tushuradi
     },
 
-    // async userLogin() {
-    //     // const response = await axios.post("/users/login");
-    // },
+    async userLogin(user) {
+        const response = await axios.post("/users/login", {user});
+        return response.data
+    },
 
-    // async getUser() {
-    //     // const response = await axios.get("/user");
-    // },
+    async getUser() {
+        //  const response = await axios.get("/user");
+    },
 };
 
 export default AuthService;
