@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { signUserFailure, signUserStart, signUserSucces } from "../slice/auth";
 import AuthService from "../service/auth";
 
-saytdagi 10,11,13,14 darslarni qayta qayta qayta takrorla va commentlar!!!
+// saytdagi 10,11,13,14 darslarni qayta qayta qayta takrorla va commentlar!!!
 
 const Register = () => {
     const [name, setName] = useState("");

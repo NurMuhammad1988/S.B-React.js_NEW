@@ -13,9 +13,9 @@ export const authSlice = createSlice({
     name: "auth",//nomi
     initialState,//boshlang'ich qiymati
     reducers: {
-        //LOGIN
+        //LOGIN bu login.jsx uchin
 
-        loginUserStart : state => {//bu state boshlang'ich qiymat yani stateni isloading qiymatini true qildik boshlang'ich qiymati esa false edi
+        loginUserStart : state => {//bu state boshlang'ich qiymat yani stateni isloading qiymatini true qildik boshlang'ich qiymati esa aslida false edi yani bu stateda hamma boshlang'ich qiymatlar bo'ladi va bu qiymatlarni birini o'zgartirish yoki ishlov berish kerak bo'lsa shu satatedan keyin nuqta qo'yilganda boshlan'ich qiymatlar chiaqadi va ichidan keraklisini tanlab quyidagi holatday ishlov berish mumkun
             state.isLoading = true
         },//user start bo'lganda yoki secces bo'ladi yoki failure bo'ladi shulardan birini chiqarish uchun
 
@@ -23,7 +23,7 @@ export const authSlice = createSlice({
         loginUserSucces  : state => {},
         loginUserFailure : state => {},
 
-        //REGISTER
+        //REGISTER bu register.jsx uchun    
         registerUserStart : state => {
             state.isLoading = true
         },//user start bo'lganda yoki secces bo'ladi yoki failure bo'ladi shulardan birini chiqarish uchun
@@ -34,7 +34,7 @@ export const authSlice = createSlice({
     }
 });
 
-export const {loginUserStart, registerUserStart} =  authSlice.actions//yani funksiylarni object qilib default export qilish
+export const {loginUserStart, registerUserStart} =  authSlice.actions//yani funksiylarni object qilib default export qilish yani reduserni bu reduxni ona funksiyasi buni ichida bir nechta bola funksiyalar bo'lishi mumkun shu sabab har bir funksiya default qilib export qilinishi kerak shunda app ichida hohlagan failga chaqirib ishlatish mumkun va reduserni o'ziniham alohida export qilib qo'yish kerak buni sababi bola funksiya export bo'lgan bilan ona funksiya export qilinmasa bola funksiya ishlamasligida//bu reduser funksiya appni ichidamas demak bu reduser va ichidagi bola funksiyalar qachonki appni componentlariga chaqilsa va o'sha appni componentlarida ishlatilganda faqat o'sha joyda render bo'ladi yani satate bo'lib componentma component yurmeydi shu sabab app tez ishlaydi bu seo saytni seo qilish uchunham juda muhum hissoblanadi
 export default authSlice.reducer
 
 //// 12. dars JWT token// yani json web token nima bu jwt saytlarda ro'yhatdan o'tish uchun kerak yani userni malumotlarini saqlab turish uchun kerak   
