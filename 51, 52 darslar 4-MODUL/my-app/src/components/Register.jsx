@@ -9,7 +9,7 @@ const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch(); //holatni yangilash va yangi holatni qaytarish uchun yani bu holatda loginUserStartni holatini qaytaradi
-    const { isLoading } = useSelector((state) => state.auth); //isloading authda bitta bo'lhani uchun pastdagi loading buttonlar bir hil ishlepti masalan loginga bosilsa registor buttonham loading bo'lib qolepti
+    const { isLoading } = useSelector((state) => state.auth); //isloading authda bitta bo'lgani uchun pastdagi loading buttonlar bir hil ishlepti masalan loginga bosilsa registor buttonham loading bo'lib qolepti
 
 
     const loginHandler = (e) => {
