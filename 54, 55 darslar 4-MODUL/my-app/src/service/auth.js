@@ -4,13 +4,13 @@ import axios from "./api";
 const AuthService = {
     //constructor va ichida constructor functionlar
     async userRegister(user) {
-        const response   = await axios.post("/users", { user }); //api.jsda ko'rsatilgan asosiy server urlini nomi yani serverda turgan users papkasiga post so'rov jo'natish
-        return response.data//return response o'zgaruvchini ishga tushuradi
+        const response = await axios.post("/users", { user }); //api.jsda ko'rsatilgan asosiy server urlini nomi yani serverda turgan users papkasiga post so'rov jo'natish
+        return response.data; //return response o'zgaruvchini ishga tushuradi//bu holatda response o'zgaruvchi faqat dataga ishlasin deyildi shunda serverdan faqat data nomli object keladi shunda ro'yhatdan o'tgan userni asosiy malumotlarini o'zi bitta object ichida keladi
     },
 
     async userLogin(user) {
-        const response = await axios.post("/users/login", {user});
-        return response.data
+        const response = await axios.post("/users/login", { user });
+        return response.data;
     },
 
     async getUser() {

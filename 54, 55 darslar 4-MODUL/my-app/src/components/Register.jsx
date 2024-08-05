@@ -11,22 +11,22 @@ const Register = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const dispatch = useDispatch(); //holatni yangilash va yangi holatni qaytarish uchun yani bu holatda loginUserStartni holatini qaytaradi
+    const dispatch = useDispatch(); //holatni yangilash va yangi holatni qaytarish uchun yani bu holatda loginUserStartni holatini qaytaradi bu react reduxda yozilgan funksiya
     const { isLoading } = useSelector((state) => state.auth); //isloading authda bitt a bo'lhani uchun pastdagi loading buttonlar bir hil ishlepti masalan loginga bosilsa registor buttonham loading bo'lib qolepti
 
     const registerHandler = async (e) => {
         e.preventDefault();
         dispatch(signUserStart()); //shu registerUserStart ishlaganda loginHandler chaqirilgan buttondan boshqa joy yangilanmasin//registerUserStart auth.jsda yozilgan redux funksiya shu sabab () chaqirilishi kerak
-        const user = { username: name, email, password };
+        const user = { username: name, email, password };//yani bu holatda username usestateni namesiga teng va bu email va passwordlar usestatedan kelepti yani boshlang'ich qiymatlari bo'sh va bunga user malumotlar yozib registerhandlerga click qilganda useRegister try bo'lib yani serverga malumot jo'natishga harakat qiladi va parametrida user nomli objectni olib boradi va slida bu user serverda yozib qo'yilgan userni ichidaga tushadigan yangi userlar papkasi axison buni string qilib serverga jo'natadi //username bilan usestatedagi name bir biriga tushmagani uchun username = name qilindi bu satatelaeni setlari inputlargasetstate qilib berilgan shu sabab input bu statelarni tanepti yani inputdagi o'zgarishlarni ushlab olepti
 
         try {
             const response = await AuthService.userRegister(user);
             console.log(response);
             console.log(user); //foydalanuvchi ro'yhatdan o'tganligini ko'rish uchun
             dispatch(signUserSucces(response.user)); //register actions
-        } catch (error) {
-            // console.log(error.response.data);
-            dispatch(signUserFailure(error.response.data.errors)); //register actions//error.response.data signUserFailureni parametriga borib tushadi
+        } catch (error) {   
+            console.log(error.response.data);
+            dispatch(signUserFailure(error.response.data.errors)); //register actions//error.response.data signUserFailureni parametriga borib tushadi////yani get so'rov catchga tushganda response o'zgaruvchi ichida serverdan keletgan datani errors yani serverda yozilgan errors arrayni ichidagini ko'rsatadi
         }
     };
 

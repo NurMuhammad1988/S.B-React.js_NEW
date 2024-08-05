@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import AuthReducer from "../slice/auth";
 
-    // reduxni o'zidaham middleware api so'rovlar jo'natish mumkun  
+    // reduxni o'zidaham middleware bilan  api so'rovlar jo'natish mumkun  
 
 export default configureStore({
     reducer: {
