@@ -4,28 +4,27 @@ import { Input } from "../ui";
 import { useDispatch, useSelector } from "react-redux";
 import { signUserFailure, signUserStart, signUserSucces } from "../slice/auth";
 import AuthService from "../service/auth";
-
-
+import ValidationError from "./validation-error";
 
 const Register = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const dispatch = useDispatch(); 
-    const { isLoading } = useSelector((state) => state.auth); 
+    const dispatch = useDispatch();
+    const { isLoading } = useSelector((state) => state.auth);
 
     const registerHandler = async (e) => {
         e.preventDefault();
-        dispatch(signUserStart()); 
+        dispatch(signUserStart());
         const user = { username: name, email, password };
         try {
             const response = await AuthService.userRegister(user);
             console.log(response);
-            console.log(user); 
+            console.log(user);
             dispatch(signUserSucces(response.user));
-        } catch (error) {   
+        } catch (error) {
             console.log(error.response.data);
-            dispatch(signUserFailure(error.response.data.errors)); 
+            dispatch(signUserFailure(error.response.data.errors));
         }
     };
 
@@ -41,6 +40,8 @@ const Register = () => {
                         height="60"
                     />
                     <h1 className="h3 mb-3 fw-normal">Please register</h1>
+
+                    <ValidationError />
 
                     <Input
                         label={"Username"} //label
@@ -70,7 +71,6 @@ const Register = () => {
                         type="submit"
                     >
                         {isLoading ? "Loading..." : "Register"}
-                        
                     </button>
                 </form>
             </main>

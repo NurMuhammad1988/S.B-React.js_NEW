@@ -10,6 +10,7 @@ const Input = ({ label, state, setState, type = "text" }) => {
                 // id="floatingInput"
                 placeholder={label}
                 type={type}
+                autoComplete="on"//bu hatoni to'htatdi hato react htmlni render qilishda edi bu input dynamic bo'lgani sababli boshqa compnentda renderda qanodaydur hato bo'ldi autocomplete="on" esa shu hatoni tohtatdi hato texti >>>>> [DOM] Input elements should have autocomplete attributes (suggested: "current-password")
             />
 
             <label className="text-dark" 
