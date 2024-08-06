@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { useSelector } from "react-redux";
 
 const ValidationError = () => {
-    const { error } = useSelector((state) => state.auth);
+    const { error } = useSelector((state) => state.auth);//store papkadagi index.jsdan keletgan auth 
     // console.log(error);
 
     const errorMesssage = useCallback(() => {
