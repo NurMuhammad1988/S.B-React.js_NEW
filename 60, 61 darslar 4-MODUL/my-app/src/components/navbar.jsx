@@ -1,9 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logo } from "../constants";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removeItem } from "../helpers/persistance-storage";
+import { logoutUser } from "../slice/auth";
 
 const Navbar = () => {
     const { loggedIn, user } = useSelector((state) => state.auth);
+
+    const navigate = useNavigate();
+
+    const dispatch = useDispatch()//holatni yangilash va yangi holatni qaytarish uchun
+
+    const logoutHandleer = () => {
+        dispatch(logoutUser())// slice papkani ichida yozilgan reducer ona funksiyasi bolasi logoutUserni ohirgi holatini olish uchun
+        removeItem("token")//helpers papkani ichidagi persistance-storage fileda yozilgan funksiya vazifasi localstoragedagi tokenni udalit qilish
+        navigate("/login")//yo'naltirish yani agar logoutUserdagi ohirgi holat user login qilgan bo'lsa bu logouthandler funksiya pstdagi buttonga  bosilganda userni login.jsx filega yo'naltiradi yani user loyihadan chiqib ketadi va boshqatdan login qilish bo'limiga tushadi bunga sabab localstorgedan server bergan tokeni udalit bo'lgani uchun 
+    };
+
 
     return (
         <div>
@@ -23,8 +36,11 @@ const Navbar = () => {
                                 {` Username:   ${user.username} `}
                             </p>
 
-                            <button className="btn btn-outline-danger">
-                                User Logout!!!
+                            <button
+                                className="btn btn-outline-danger"
+                                onClick={logoutHandleer}
+                            >
+                                Logout
                             </button>
                         </>
                     ) : (

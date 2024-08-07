@@ -13,3 +13,11 @@ export const getItem = (key) => {
         console.log("Errorrr getting data");
     }
 };
+
+export const removeItem = (key) => {
+    try {
+        localStorage.removeItem(key);
+    } catch (error) {
+        console.log("Errorrr removing data");
+    }
+};//local storagedagi userni server bergan tokenini udalit qilish uchun dynamic tarzda yozilgan funksiya
