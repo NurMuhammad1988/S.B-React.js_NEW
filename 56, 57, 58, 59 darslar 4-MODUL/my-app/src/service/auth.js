@@ -1,20 +1,21 @@
 ////Registerga oid server file
+
 import axios from "./api";
 
 const AuthService = {
     //constructor va ichida constructor functionlar
     async userRegister(user) {
-        const response = await axios.post("/users", { user }); //api.jsda ko'rsatilgan asosiy server urlini nomi yani serverda turgan users papkasiga post so'rov jo'natish
-        return response.data; //return response o'zgaruvchini ishga tushuradi//bu holatda response o'zgaruvchi faqat dataga ishlasin deyildi shunda serverdan faqat data nomli object keladi shunda ro'yhatdan o'tgan userni asosiy malumotlarini o'zi bitta object ichida keladi
+        const { data } = await axios.post("/users", { user });
+        //api.jsda ko'rsatilgan asosiy server urlini nomi yani serverda turgan users papkasiga post so'rov jo'natish
+        return data; //return data o'zgaruvchini ishga tushuradi//bu holatda data o'zgaruvchi faqat dataga ishlasin deyildi shunda serverdan faqat data nomli object keladi shunda ro'yhatdan o'tgan userni asosiy malumotlarini o'zi bitta object ichida keladi
     },
-
     async userLogin(user) {
-        const response = await axios.post("/users/login", { user });
-        return response.data;
+        const { data } = await axios.post("/users/login", { user });
+        return data;
     },
-
     async getUser() {
-        //  const response = await axios.get("/user");
+        const { data } = await axios.get("/user");//yani serverdan get qilib userni oldik va bu userni tokenini olib localstoragega qo'ydik
+        return data;
     },
 };
 

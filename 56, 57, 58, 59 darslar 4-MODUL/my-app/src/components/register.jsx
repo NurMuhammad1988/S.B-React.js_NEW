@@ -1,17 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { logo } from "../constants";
 import { Input } from "../ui";
 import { useDispatch, useSelector } from "react-redux";
 import { signUserFailure, signUserStart, signUserSucces } from "../slice/auth";
 import AuthService from "../service/auth";
 import ValidationError from "./validation-error";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
-    const { isLoading } = useSelector((state) => state.auth);
+    const { isLoading, loggedIn } = useSelector((state) => state.auth);
+
+    const navigate = useNavigate();
 
     const registerHandler = async (e) => {
         e.preventDefault();
@@ -21,12 +24,20 @@ const Register = () => {
             const response = await AuthService.userRegister(user);
             console.log(response);
             console.log(user);
+            navigate("/");
             dispatch(signUserSucces(response.user));
         } catch (error) {
             console.log(error.response.data);
             dispatch(signUserFailure(error.response.data.errors));
         }
     };
+
+    useEffect(() => {
+        if (loggedIn) {
+            navigate("/"); //protate route  login yani user login qilgandan keyin boshqa register. bo'limiga o'tib qaytadan register qilaolmaydi yani hafsiz routing 
+        } //yani loggedin true bo'lsa yani user registerdan o'tsa  userni navigate qilib asosiy sahifaga o'tqiz
+    }, [loggedIn]); //yani loggedin bo'lganda yani user saytga kirganda bu useeffect ishlasin va asosoy sahifaga userni navigate qilsin
+
 
     return (
         <div className="text-center mt-5">

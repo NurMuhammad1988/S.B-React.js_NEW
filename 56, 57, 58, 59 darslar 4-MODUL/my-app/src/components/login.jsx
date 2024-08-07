@@ -1,16 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { logo } from "../constants";
 import { Input } from "../ui";
 import { useDispatch, useSelector } from "react-redux";
 import { signUserFailure, signUserStart, signUserSucces } from "../slice/auth";
 import AuthService from "../service/auth";
 import { ValidationError } from ".";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
-    const { isLoading } = useSelector((state) => state.auth);
+    const { isLoading, loggedIn } = useSelector((state) => state.auth);
+
+    const navigate = useNavigate();
 
     const loginHandler = async (e) => {
         e.preventDefault();
@@ -21,10 +24,18 @@ const Login = () => {
             console.log(response);
             // console.log(user);//server tushunepti lekin javob bermepti
             dispatch(signUserSucces(response.user));
+            navigate("/"); //yani userni navigatsa qilish yani agar bu tryni ichidagi so'rov omadli bajarilsa yani catchga tushmasa userni bosh sahifaga>>>"/" jo'natadi yani navigator react router domni hooki userni nimadur qilganda yokida saytda nimadur sodir bo'lganda belgilangan joyga yani sahifaga yo'naltriadigan hook yani funskiya
         } catch (error) {
             dispatch(signUserFailure(error.response.data.errors));
         }
     };
+
+    useEffect(() => {
+        if (loggedIn) {
+            navigate("/");
+            //protate route  login yani user login qilgandan keyin boshqa register. bo'limiga o'tib qaytadan register qilaolmaydi yani hafsiz routing 
+        } //yani loggedin true bo'lsa yani user login qilsa userni navigate qilib asosiy sahifaga o'tqiz
+    }, [loggedIn]); //yani loggedin bo'lganda yani user saytga kirganda bu useeffect ishlasin va asosoy sahifaga userni navigate qilsin
 
     return (
         <div className="text-center mt-5">
