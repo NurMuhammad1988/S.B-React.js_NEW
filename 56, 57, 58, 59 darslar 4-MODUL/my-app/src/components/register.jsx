@@ -34,10 +34,9 @@ const Register = () => {
 
     useEffect(() => {
         if (loggedIn) {
-            navigate("/"); //protate route  login yani user login qilgandan keyin boshqa register. bo'limiga o'tib qaytadan register qilaolmaydi yani hafsiz routing 
+            navigate("/"); //protate route login yani user login qilgandan keyin boshqa register. bo'limiga o'tib qaytadan register qilaolmaydi yani hafsiz routing
         } //yani loggedin true bo'lsa yani user registerdan o'tsa  userni navigate qilib asosiy sahifaga o'tqiz
-    }, [loggedIn]); //yani loggedin bo'lganda yani user saytga kirganda bu useeffect ishlasin va asosoy sahifaga userni navigate qilsin
-
+    }, [loggedIn]); //yani loggedin bo'lganda yani user saytga kirganda bu useeffect ishlasin va asosiy sahifaga userni navigate qilsin//yani endi user ham login qilib yana register yoki boshqatdan loginga kirolmeydi
 
     return (
         <div className="text-center mt-5">

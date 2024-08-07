@@ -13,7 +13,7 @@ const Login = () => {
     const dispatch = useDispatch();
     const { isLoading, loggedIn } = useSelector((state) => state.auth);
 
-    const navigate = useNavigate();
+    const navigate = useNavigate(); //userni navigate qilish uchun
 
     const loginHandler = async (e) => {
         e.preventDefault();
@@ -22,7 +22,6 @@ const Login = () => {
         try {
             const response = await AuthService.userLogin(user);
             console.log(response);
-            // console.log(user);//server tushunepti lekin javob bermepti
             dispatch(signUserSucces(response.user));
             navigate("/"); //yani userni navigatsa qilish yani agar bu tryni ichidagi so'rov omadli bajarilsa yani catchga tushmasa userni bosh sahifaga>>>"/" jo'natadi yani navigator react router domni hooki userni nimadur qilganda yokida saytda nimadur sodir bo'lganda belgilangan joyga yani sahifaga yo'naltriadigan hook yani funskiya
         } catch (error) {
@@ -33,9 +32,9 @@ const Login = () => {
     useEffect(() => {
         if (loggedIn) {
             navigate("/");
-            //protate route  login yani user login qilgandan keyin boshqa register. bo'limiga o'tib qaytadan register qilaolmaydi yani hafsiz routing 
+            //protate route  login yani user login qilgandan keyin boshqa register. bo'limiga o'tib qaytadan register qilaolmaydi yani hafsiz routing
         } //yani loggedin true bo'lsa yani user login qilsa userni navigate qilib asosiy sahifaga o'tqiz
-    }, [loggedIn]); //yani loggedin bo'lganda yani user saytga kirganda bu useeffect ishlasin va asosoy sahifaga userni navigate qilsin
+    }, [loggedIn]); //yani loggedin bo'lganda yani user saytga kirganda bu useeffect ishlasin va asosiy sahifaga userni navigate qisin
 
     return (
         <div className="text-center mt-5">

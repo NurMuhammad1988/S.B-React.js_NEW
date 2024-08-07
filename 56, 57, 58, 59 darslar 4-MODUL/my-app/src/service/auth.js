@@ -14,7 +14,7 @@ const AuthService = {
         return data;
     },
     async getUser() {
-        const { data } = await axios.get("/user");//yani serverdan get qilib userni oldik va bu userni tokenini olib localstoragega qo'ydik
+        const { data } = await axios.get("/user"); //yani serverdan get qilib userni oldik va bu userni tokenini olib localstoragega qo'ydik
         return data;
     },
 };
