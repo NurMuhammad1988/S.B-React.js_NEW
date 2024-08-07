@@ -8,7 +8,6 @@ import { getItem } from "./helpers/persistance-storage";
 
 const App = () => {
     const dispatch = useDispatch();
-      //komponent holatini yangilash va yangi holatni qaytarish uchun ishlatiladi yani bu holatda pastda signUserSucces reduser funksiyani holatini qaytaradi yani getUserda   AuthService chaqirildi va shetda yaratilgan getUser funksiyaga ulab qo'yildi va dispatchda AuthService funksiyada getUser funksiyasi bor yani serverdan get qiladi shu chaqirilsin parametrida user objecti bilan shunda get, set qilinib tokeni olingan serverdan kelgan user aftamatik tarzda butun app.jsni ichida bo'ladi yani logout bo'ladi
 
     const getUser = async () => {
         try {
@@ -25,7 +24,7 @@ const App = () => {
         if (token) {
             getUser();
         }
-    }, []); //dependes bo'sh yani user saytga kirishi bilan bu useeffect ishga tushadi bu useeffectda esa yuqoridagi getuser funksiyasi bor  user saytga kirganda getuser funksiyasi ishga tushadi va agar tokendagi getitemni tokeni bo'lsa ishga tushadi
+    }, []);
 
     return (
         <div>
