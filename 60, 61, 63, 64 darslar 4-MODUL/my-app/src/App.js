@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Main, Login, Register, Navbar } from "./components"; //indexni aftamatik tarzda topadi//////asosiy src papkani ichidagi bu app.js dasturni asosiy yadrosi hissoblanadi components papkada yaratiladigan jsx componentlarni distruptatsa qilib impor qilindi chunki components papkada index.jsda bu componentlar default qilib export qilingan bu degani defaulr as import shu  src papkadagi har qanday papkaga distruptatsa qilib import qilinsa bo'ladi
+import { Main, Login, Register, Navbar, ArticleDetail } from "./components"; //indexni aftamatik tarzda topadi//////asosiy src papkani ichidagi bu app.js dasturni asosiy yadrosi hissoblanadi components papkada yaratiladigan jsx componentlarni distruptatsa qilib import qilindi chunki components papkada index.jsda bu componentlar default qilib export qilingan bu degani default as import shu  src papkadagi har qanday papkaga distruptatsa qilib import qilinsa bo'ladi
 import { useEffect } from "react";
 import AuthService from "./service/auth";
 import { useDispatch } from "react-redux";
@@ -46,11 +46,15 @@ const App = () => {
         <div>
             <Navbar />
 
-            <Routes>
-                <Route path="/" element={<Main />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="register" element={<Register />} />
-            </Routes>
+            <div className="container">
+                <Routes>
+                    <Route path="/" element={<Main />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="register" element={<Register />} />
+                    <Route path="/article/:slug" element={<ArticleDetail />} />
+                    {/* /article/:slug dynamic slug qo'shish */}
+                </Routes>
+            </div>
         </div>
     );
 };

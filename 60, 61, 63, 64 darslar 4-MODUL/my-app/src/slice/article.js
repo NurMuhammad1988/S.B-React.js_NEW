@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     isLoading: false,
-    articles: [], //yani boshlang'ich qiymatda articles bo'sh array chunki serverdan keladigan massivlarni shu joyga tushurish kerak
+    articles: [], //yani boshlang'ich qiymatda articles bo'sh array chunki serverdan keladigan massivlarni shu joyga tushurish kerak//hammaarticlelar bo'ladi
+    ArticleDetail: null, //bitta articilni malumotilari bo'ladi
     error: null,
 };
 
@@ -20,11 +21,30 @@ export const articleSlice = createSlice({
 
         getArticleFailure: (state, action) => {
             state.error = action.payload; //yani errorham serverdan keladi??????
+            state.isLoading = false;
+        },
+
+        getArticleDetailStart: (state) => {
+            state.isLoading = true;
+        },
+
+        getArticleDetailSuccess: (state, action) => {
+            state.isLoading = false;
+            state.ArticleDetail = action.payload;
+        },
+        getArticleDetailFailure: (state) => {
+            state.isLoading = false;
         },
     },
 });
 
-export const { getArticlesStart, getArticlesSuccess, getArticleFailure } =
-    articleSlice.actions;
+export const {
+    getArticlesStart,
+    getArticlesSuccess,
+    getArticleFailure,
+    getArticleDetailStart,
+    getArticleDetailSuccess,
+    getArticleDetailFailure,
+} = articleSlice.actions;
 
 export default articleSlice.reducer;
