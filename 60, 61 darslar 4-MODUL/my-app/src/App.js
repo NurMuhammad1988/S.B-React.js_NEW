@@ -5,6 +5,8 @@ import AuthService from "./service/auth";
 import { useDispatch } from "react-redux";
 import { signUserSucces } from "./slice/auth";
 import { getItem } from "./helpers/persistance-storage";
+import ArticleService from "./service/article";
+import { getArticlesStart, getArticlesSuccess } from "./slice/article";
 
 const App = () => {
     const dispatch = useDispatch();
@@ -19,11 +21,25 @@ const App = () => {
         }
     };
 
+    const getArticles = async () => {
+        dispatch(getArticlesStart());
+
+        try {
+            const response = await ArticleService.getArticles();
+            console.log(response);
+            dispatch(getArticlesSuccess(response.articles));
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     useEffect(() => {
         const token = getItem("token");
         if (token) {
             getUser();
         }
+
+        getArticles(); //yani user saytga kirgandan getArticles ishga tushadi yani serverdan atriclelar keladi
     }, []);
 
     return (

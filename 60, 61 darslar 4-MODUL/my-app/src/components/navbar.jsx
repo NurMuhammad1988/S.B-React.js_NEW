@@ -40,8 +40,9 @@ const Navbar = () => {
                                 className="btn btn-outline-danger"
                                 onClick={logoutHandleer}
                             >
-                                Logout
+                                Logout Chiqish
                             </button>
+                            {/* endi bu buttonga bosilganda userni loyihadan chiqarib qaytadan login qilish uchun loginga jo'natiladi yani qaytadan loginn parol terishi kerak browserdan localstoragedan tokeni udalit bo'ladi */}
                         </>
                     ) : (
                         <>
