@@ -9,14 +9,13 @@ const Navbar = () => {
 
     const navigate = useNavigate();
 
-    const dispatch = useDispatch()//holatni yangilash va yangi holatni qaytarish uchun
+    const dispatch = useDispatch(); //holatni yangilash va yangi holatni qaytarish uchun
 
     const logoutHandleer = () => {
-        dispatch(logoutUser())// slice papkani ichida yozilgan reducer ona funksiyasi bolasi logoutUserni ohirgi holatini olish uchun
-        removeItem("token")//helpers papkani ichidagi persistance-storage fileda yozilgan funksiya vazifasi localstoragedagi tokenni udalit qilish
-        navigate("/login")//yo'naltirish yani agar logoutUserdagi ohirgi holat user login qilgan bo'lsa bu logouthandler funksiya pstdagi buttonga  bosilganda userni login.jsx filega yo'naltiradi yani user loyihadan chiqib ketadi va boshqatdan login qilish bo'limiga tushadi bunga sabab localstorgedan server bergan tokeni udalit bo'lgani uchun yani logoutHandleer ona funksiyani ichidagi bu ohirgi ikkala funksiya birdey ishleydi
+        dispatch(logoutUser()); // slice papkani ichida yozilgan reducer ona funksiyasi bolasi logoutUserni ohirgi holatini olish uchun
+        removeItem("token"); //helpers papkani ichidagi persistance-storage fileda yozilgan funksiya vazifasi localstoragedagi tokenni udalit qilish
+        navigate("/login"); //yo'naltirish yani agar logoutUserdagi ohirgi holat user login qilgan bo'lsa bu logouthandler funksiya pstdagi buttonga  bosilganda userni login.jsx filega yo'naltiradi yani user loyihadan chiqib ketadi va boshqatdan login qilish bo'limiga tushadi bunga sabab localstorgedan server bergan tokeni udalit bo'lgani uchun yani logoutHandleer ona funksiyani ichidagi bu ohirgi ikkala funksiya birdey ishleydi
     };
-
 
     return (
         <div>
@@ -36,6 +35,15 @@ const Navbar = () => {
                                 {` Username:   ${user.username} `}
                             </p>
 
+                            <button className="btn btn-outline-warning mx-2">
+                                <Link
+                                    to={"/create-article"}
+                                    className="me-3 py-2 text-white text-decoration-none"
+                                >
+                                    Create article
+                                </Link>
+                            </button>
+
                             <button
                                 className="btn btn-outline-danger"
                                 onClick={logoutHandleer}
@@ -46,19 +54,23 @@ const Navbar = () => {
                         </>
                     ) : (
                         <>
-                            <Link
-                                to={"/login"}
-                                className="me-3 py-2 text-white text-decoration-none"
-                            >
-                                Login
-                            </Link>
+                            <button className="btn btn-outline-secondary mx-2 ">
+                                <Link
+                                    to={"/login"}
+                                    className="me-3 py-2 text-white text-decoration-none"
+                                >
+                                    Login
+                                </Link>
+                            </button>
 
-                            <Link
-                                to={"/register"}
-                                className="me-3 py-2 text-white text-decoration-none"
-                            >
-                                Register
-                            </Link>
+                            <button className="btn btn-outline-secondary ">
+                                <Link
+                                    to={"/register"}
+                                    className="me-3 py-2 text-white text-decoration-none"
+                                >
+                                    Register
+                                </Link>
+                            </button>
                         </>
                     )}
                 </nav>
