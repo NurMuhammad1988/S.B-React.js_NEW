@@ -26,7 +26,7 @@ const ArticleForm = props => {
     <button 
         className="w-100 btn btn-primary mt-2"
         type="submit"
-        // disabled={isLoading}
+        disabled={isLoading}
         
     >
         {isLoading ? "Loading..." : "Create"}

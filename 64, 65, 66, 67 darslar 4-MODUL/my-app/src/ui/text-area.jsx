@@ -18,3 +18,4 @@ const TextArea = ({ label, state, setState, height = "100px" }) => {
 };
 
 export default TextArea;
+//dynamic text areya 

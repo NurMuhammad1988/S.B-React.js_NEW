@@ -9,7 +9,6 @@ import {
 } from "../slice/article";
 import { useNavigate } from "react-router-dom";
 
-// 24. Create article. UI va 25. Create article. API darslariga comment yozish kerak
 
 const CreateArticle = () => {
     const [title, setTitle] = useState("");
@@ -25,7 +24,7 @@ const CreateArticle = () => {
         dispatch(postArticleStart());
 
         try {
-            const response = await ArticleService.postArticle(article); //yani postArticle service papkadagi article.jsdan keltgan post so'rovni bajaradigan funksiya parametridagi article esa yuqorida yozilgan title description va bodydan yani bo'sh massivlardan iborat object yani service papkadagi article.jsdgi postArticle post funksiya parametridaham article bor yani shu article bo'sh objecti bor yani bu bo'sh object serverga jo'natib qo'yilepti ichidagi objectni title, descripton, body qiymatlarini server taniydi va ????????????????????????????????????????????????????????????
+            const response = await ArticleService.postArticle(article); //yani postArticle service papkadagi article.jsdan keletgan post so'rovni bajaradigan funksiya parametridagi article esa yuqorida yozilgan title description va bodydan yani bo'sh massivlardan iborat object yani service papkadagi article.jsdgi postArticle post funksiya parametridaham article bor yani shu article bo'sh objecti bor yani bu bo'sh object serverga jo'natib qo'yilepti ichidagi objectni title, descripton, body qiymatlarini server taniydi va shu qiymatlarga yozilib yani post qilingan articleni qaytarib beradi serverga postni postman ilovasida bajarildi
             console.log(response);
             dispatch(postArticleSuccess());
             navigate("/");
