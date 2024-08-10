@@ -1,0 +1,2 @@
+////bu alohida joyda loyihaga tegishli imglar saqlanadi tartib uchun 
+export const logo = "https://img.freepik.com/premium-vector/logo-vector-infinity-link-minimalist-link-concept-connection_790567-270.jpg?w=1380"
