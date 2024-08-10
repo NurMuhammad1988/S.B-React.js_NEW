@@ -54,24 +54,25 @@ const ArticleDetail = () => {
                                 "DD MMM, YYYY"
                             )}
                         </p>
-                        <div class="col-md-6">
-                            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                                <div class="col p-4 d-flex flex-column position-static">
-                                    <strong class="d-inline-block mb-2 text-primary text-uppercase"> <p className="text-secondary m-0 text-capitalize">Author:</p>  
+                        <div className="col-md-6">
+                            <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                <div className="col p-4 d-flex flex-column position-static">
+                                    <strong className="d-inline-block mb-2 text-primary text-uppercase"> <p className="text-secondary m-0 text-capitalize">Author:</p>  
                                          {articleDetail.author.username}
                                     </strong>
-                                    <p class="card-text mb-auto">
-                                        {articleDetail.author.bio} <b>Serverda bio  yo'q </b>
+                                    <p className="card-text mb-auto">
+                                        {articleDetail.author.bio} 
+                                        {/* <b>Serverda bio  yo'q </b>
                                         Lorem ipsum dolor, sit amet
                                         consectetur adipisicing elit. Reiciendis
                                         minima optio iste, impedit unde ipsum
                                         quia adipisci deleniti veniam excepturi
-                                        qui rerum vero.
+                                        qui rerum vero. */}
                                     </p>
                                 </div>
-                                <div class="col-auto d-none d-lg-block">
+                                <div className="col-auto d-none d-lg-block">
                                     <svg
-                                        class="bd-placeholder-img"
+                                        className="bd-placeholder-img"
                                         width="200"
                                         height={"100%"}
                                         xmlns="http://www.w3.org/2000/svg"
