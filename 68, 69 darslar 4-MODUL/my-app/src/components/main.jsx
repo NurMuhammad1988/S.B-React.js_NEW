@@ -109,6 +109,7 @@ const Main = () => {
                                                         <>
                                                             {" "}
                                                             <button
+                                                            onClick={() => navigate(`/edit-article/${article.slug} `)}
                                                                 type="button"
                                                                 className="btn btn-sm btn-outline-secondary  text-white"
                                                             >

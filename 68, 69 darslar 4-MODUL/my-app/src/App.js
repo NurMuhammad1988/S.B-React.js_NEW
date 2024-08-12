@@ -6,6 +6,7 @@ import {
     Navbar,
     ArticleDetail,
     CreateArticle,
+    EditArticle,
 } from "./components"; //indexni aftamatik tarzda topadi//////asosiy src papkani ichidagi bu app.js dasturni asosiy yadrosi hissoblanadi components papkada yaratiladigan jsx componentlarni distruptatsa qilib import qilindi chunki components papkada index.jsda bu componentlar default qilib export qilingan bu degani default as import shu  src papkadagi har qanday papkaga distruptatsa qilib import qilinsa bo'ladi
 import { useEffect } from "react";
 import AuthService from "./service/auth";
@@ -14,6 +15,7 @@ import { signUserSucces } from "./slice/auth";
 import { getItem } from "./helpers/persistance-storage";
 // import ArticleService from "./service/article";
 // import { getArticlesStart, getArticlesSuccess } from "./slice/article";
+
 
 const App = () => {
     const dispatch = useDispatch();
@@ -28,17 +30,7 @@ const App = () => {
         }
     };
 
-    // const getArticles = async () => {
-    //     dispatch(getArticlesStart());
 
-    //     try {
-    //         const response = await ArticleService.getArticles();
-    //         console.log(response);
-    //         dispatch(getArticlesSuccess(response.articles));
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // };
 
     useEffect(() => {
         const token = getItem("token");
@@ -46,7 +38,7 @@ const App = () => {
             getUser();
         }
 
-        // getArticles(); //yani user saytga kirgandan getArticles ishga tushadi yani serverdan atriclelar keladi
+    
     }, []);
 
     return (
@@ -61,6 +53,7 @@ const App = () => {
                     <Route path="/article/:slug" element={<ArticleDetail />} />
                     {/* /article/:slug dynamic slug qo'shish */}
                     <Route path="create-article" element={<CreateArticle />} />
+                    <Route path="/edit-article/:slug" element={<EditArticle/>}/>
                 </Routes>
             </div>
         </div>

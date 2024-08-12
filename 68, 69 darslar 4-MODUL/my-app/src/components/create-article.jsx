@@ -9,7 +9,6 @@ import {
 } from "../slice/article";
 import { useNavigate } from "react-router-dom";
 
-
 const CreateArticle = () => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
